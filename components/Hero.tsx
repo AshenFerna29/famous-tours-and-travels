@@ -10,14 +10,14 @@ export default function Hero() {
       }}
     >
       {/* Top fade overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-white/10 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl">
         {/* Heading (centered) */}
         <h1 className="text-4xl md:text-6xl font-bold font-poppins text-black">
           Unwrap The Wonders of <br />
-          <span className="text-orange-500">Sri Lanka</span>
+          <span className="text-[#F68713]">Sri Lanka</span>
         </h1>
         <br /><br /><br />
 

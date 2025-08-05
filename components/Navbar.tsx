@@ -18,8 +18,8 @@ export default function Navbar() {
 
       {/* Nav Links */}
       <div className="hidden md:flex gap-10 text-sm font-medium text-black">
-        <a href="#">Home</a>
-        <a href="#">About Us</a>
+        <a href="/home">Home</a>
+        <a href="/about-us">About Us</a>
         <a href="#">Booking</a>
         <a href="#">FAQ</a>
         <a href="#">Contact Us</a>
