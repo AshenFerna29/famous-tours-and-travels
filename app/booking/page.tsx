@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Footer from "@/components/Footer";
+import Form from "@/components/TourBookingForm";
 import heroImage from "@/public/images/booking-hero.jpg";
 
 export default function AboutUsPage() {
@@ -44,6 +45,8 @@ export default function AboutUsPage() {
           </p>
         </section>
       </div>
+
+      <Form />
 
       <Footer />
     </>
