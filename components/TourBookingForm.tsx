@@ -172,7 +172,7 @@ const TourBookingForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
+    <div className="max-w-5xl mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
       {/* Top Image */}
       <div className="h-60 w-full relative">
         <Image

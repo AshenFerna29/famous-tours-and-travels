@@ -13,7 +13,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Determine if scrolled past initial threshold
       if (currentScrollY > 50) {
         setIsScrolled(true);
@@ -24,14 +24,14 @@ export default function Navbar() {
       // Show navbar at the very top of the page
       if (currentScrollY < 100) {
         setIsVisible(true);
-      } 
+      }
       // Hide navbar when scrolling down, show when scrolling up
       else if (currentScrollY > lastScrollY) {
         setIsVisible(false); // Scrolling down
       } else {
         setIsVisible(true); // Scrolling up
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -62,7 +62,7 @@ export default function Navbar() {
       />
 
       {/* Nav Links */}
-      <div className="hidden md:flex gap-10 text-sm font-medium text-black">
+      <div className="hidden md:flex gap-15 text-sm font-medium text-black ml-16">
         <a href="/home">Home</a>
         <a href="/about-us">About Us</a>
         <a href="/booking">Booking</a>
