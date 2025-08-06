@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import Image from "next/image";
+import SuccessNotification from "./SuccessNotification";
 
 interface FormData {
   fullName: string;
@@ -34,6 +35,7 @@ const TourBookingForm: React.FC = () => {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const validateField = (name: string, value: string): string | undefined => {
     switch (name) {
@@ -122,7 +124,7 @@ const TourBookingForm: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -131,26 +133,42 @@ const TourBookingForm: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
-      alert(
-        "Booking request submitted successfully! We'll get back to you within 24 hours."
-      );
-      setIsSubmitting(false);
-
-      // Reset form
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        package: "",
-        guests: "",
-        date: "",
-        request: "",
+    try {
+      // Send booking data to API for email processing
+      const response = await fetch("/api/send-booking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-      setErrors({});
-    }, 2000);
+
+      if (response.ok) {
+        // Show success notification
+        setShowSuccess(true);
+
+        // Reset form
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          package: "",
+          guests: "",
+          date: "",
+          request: "",
+        });
+        setErrors({});
+      } else {
+        throw new Error("Failed to send booking confirmation");
+      }
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+      alert(
+        "There was an error processing your booking. Please try again or contact us directly."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -427,6 +445,13 @@ const TourBookingForm: React.FC = () => {
           </div>
         </form>
       </div>
+
+      <SuccessNotification
+        show={showSuccess}
+        onClose={() => setShowSuccess(false)}
+        title="Booking Submitted Successfully!"
+        message="Your booking request has been submitted successfully! Please check your email for detailed confirmation. We'll contact you within 24 hours!"
+      />
     </div>
   );
 };

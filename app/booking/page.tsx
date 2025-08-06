@@ -16,8 +16,8 @@ export default function AboutUsPage() {
         <Image
           src={heroImage}
           alt="mountains"
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white via-white/30 to-transparent" />

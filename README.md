@@ -1,24 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Famous Tours & Travels
+
+A modern Next.js web application for a Sri Lankan tour company featuring comprehensive booking functionality with automated email confirmations and PDF generation.
+
+## Features
+
+- 🌴 **Tour Packages**: Multiple tour packages showcasing Sri Lankan destinations
+- 📝 **Smart Booking Form**: Advanced form validation with real-time feedback
+- 📧 **Email Automation**: Automatic booking confirmation emails with PDF attachments
+- 📄 **PDF Generation**: Professional booking confirmation PDFs
+- 🎨 **Modern UI**: Responsive design with Tailwind CSS
+- ✅ **Form Validation**: Comprehensive client-side validation
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with TypeScript
+- **Styling**: Tailwind CSS
+- **Email**: Nodemailer
+- **PDF**: jsPDF
+- **Images**: Next.js Image optimization
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm/yarn/pnpm
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up environment variables:
+
+Create a `.env.local` file in the root directory:
+
+```env
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+COMPANY_EMAIL=bookings@famoustours.lk
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Email Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The application supports automated email confirmations. See [EMAIL_SETUP.md](./EMAIL_SETUP.md) for detailed setup instructions.
+
+### Quick Gmail Setup:
+
+1. Enable 2-factor authentication
+2. Generate an app password
+3. Add credentials to `.env.local`
+
+## Booking Process
+
+1. **User fills booking form** with validation
+2. **Form submission** triggers API call
+3. **PDF generation** creates booking confirmation
+4. **Email sent** to customer and company
+5. **Success notification** shows completion
+6. **PDF downloads** automatically
+
+## Project Structure
+
+```
+├── app/
+│   ├── api/send-booking/     # Email API endpoint
+│   ├── booking/              # Booking page
+│   └── ...
+├── components/
+│   ├── TourBookingForm.tsx   # Main booking form
+│   ├── SuccessNotification.tsx
+│   └── ...
+├── lib/
+│   └── pdfUtils.ts          # PDF generation utilities
+└── public/images/           # Static assets
+```
 
 ## Learn More
 
