@@ -2,11 +2,56 @@
 
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react"; // Icon from Lucide (used by ShadCN)
+import { Search } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Determine if scrolled past initial threshold
+      if (currentScrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
+      // Show navbar at the very top of the page
+      if (currentScrollY < 100) {
+        setIsVisible(true);
+      } 
+      // Hide navbar when scrolling down, show when scrolling up
+      else if (currentScrollY > lastScrollY) {
+        setIsVisible(false); // Scrolling down
+      } else {
+        setIsVisible(true); // Scrolling up
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
-    <nav className="fixed h-3  top-0 left-0 w-full z-50 px-10 py-10  backdrop-blur-md flex justify-between items-center">
+    <nav
+      className={`fixed h-2 z-50 left-20 top-5 px-10 w-[90%] py-10 shadow-md rounded-4xl flex justify-between items-center transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/20 backdrop-blur-xl border border-white/30"
+          : "bg-white"
+      } ${
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      }`}
+    >
       {/* Logo */}
       <Image
         src="/images/logo.png"

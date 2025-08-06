@@ -439,7 +439,7 @@ const TourBookingForm: React.FC = () => {
               {isSubmitting ? (
                 <span className="flex items-center">Submitting...</span>
               ) : (
-                "Submit"
+                "Confirm"
               )}
             </button>
           </div>

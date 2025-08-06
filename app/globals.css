@@ -121,6 +121,6 @@
 body {
   background-color: var(--color-background, #fff);
   color: var(--color-foreground, #222);
-  font-family: 'Poppins', var(--font-sans, sans-serif);
+  font-family: "Geomanist", "Geomanist Fallback", var(--font-sans, sans-serif);
 }
 }
