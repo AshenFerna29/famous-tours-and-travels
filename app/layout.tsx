@@ -36,7 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="font-poppins antialiased">{children}</body>
+      <body className="font-poppins antialiased overflow-x-hidden max-w-full">{children}</body>
     </html>
   );
 }

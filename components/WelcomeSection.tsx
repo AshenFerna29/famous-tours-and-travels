@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 export default function WelcomeSection() {
   return (
-    <section className="bg-white py-20 px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="bg-white py-20 px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center overflow-hidden">
       <div>
-        <h2 className="text-5xl md:text-5xl font-bold mb-6 leading-tight">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
           Welcome to <span className="text-[#52ACE4]"><br />Famous Tours and <br /> Travels</span>
         </h2>
         <p className="text-gray-500 font-medium mb-6 max-w-xl md:pl-0 text-justify">
@@ -38,7 +38,7 @@ export default function WelcomeSection() {
           alt="Famous Tours Logo"
           width={750}
           height={750}
-          className="object-contain"
+          className="object-contain max-w-full h-auto"
         />
       </div>
     </section>

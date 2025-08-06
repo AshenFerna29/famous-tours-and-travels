@@ -11,12 +11,12 @@ export default function AboutUsPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative w-full h-[80vh]">
+      <div className="relative w-full h-[80vh] overflow-hidden">
         <Image
           src={heroImage}
           alt="Beach"
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white via-white/30 to-transparent" />

@@ -19,7 +19,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-[140vh] flex flex-col justify-start items-center text-center pt-45"
+      className="relative min-h-[140vh] flex flex-col justify-start items-center text-center pt-45 overflow-hidden"
       style={{
         backgroundImage: `url('/images/home2.jpg')`,
         backgroundSize: "cover",
@@ -35,8 +35,9 @@ export default function Hero() {
         width={1200}
         height={800}
         className={`absolute z-5 transition-all duration-[2000ms] ease-out ${
-          isLoaded ? "left-1/3 transform -translate-x-1/2" : "-left-96"
+          isLoaded ? "left-1/4 transform -translate-x-1/2" : "-left-full"
         }`}
+        style={{ maxWidth: "50vw" }}
       />
 
       {/* Second Animated Cloud (right to left, smaller) */}
@@ -45,21 +46,22 @@ export default function Hero() {
         alt="Cloud"
         width={800}
         height={533}
-        className={`absolute top-10 z-4  transition-all duration-[2500ms] ease-out ${
-          isLoaded ? "right-1/3 transform translate-x-1/2" : "-right-96"
+        className={`absolute top-10 z-4 transition-all duration-[2500ms] ease-out ${
+          isLoaded ? "right-1/4 transform translate-x-1/2" : "-right-full"
         }`}
+        style={{ maxWidth: "40vw" }}
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl">
+      <div className="relative z-10 max-w-4xl px-4 mx-auto">
         {/* Heading (centered) */}
-        <h1 className="text-4xl md:text-7xl font-black font-Geomanist text-black">
+        <h1 className="text-4xl md:text-6xl font-black font-Geomanist text-black">
           UNWRAP THE WONDERS OF SRI LANKA
         </h1>
         <br />
 
         {/* Paragraph + Button (left aligned) */}
-        <p className="text-black font-Geomanist text-30">
+        <p className="text-black font-Geomanist text-lg md:text-30">
           Famous Tours and Travel is a Sri Lanka-based travel company dedicated
           to creating memorable and stress free journeys. From cultural tours to
           scenic getaways, we help you experience the very best of the island.
@@ -79,7 +81,7 @@ export default function Hero() {
           <ArrowUpRight size={20} className="relative z-10" />
         </button>
       </div>
-      <div>
+      <div className="w-full overflow-hidden">
         <ImageGallery />
       </div>
     </section>

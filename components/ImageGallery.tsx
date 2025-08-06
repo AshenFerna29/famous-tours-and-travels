@@ -14,11 +14,11 @@ export default function ImageGallery() {
   }, []);
 
   return (
-    <div className="px-4">
-      <div className="flex justify-center max-w-8xl mx-auto -space-x-30">
+    <div className="px-4 overflow-hidden">
+      <div className="flex justify-center max-w-7xl mx-auto gap-4 md:gap-8 flex-wrap lg:flex-nowrap">
         {/* Image 1 - Peacock */}
         <div
-          className={`relative w-96 h-[32rem] overflow-hidden transition-all duration-1000 ease-out z-20 ${
+          className={`relative w-full max-w-80 h-80 md:h-96 lg:h-[32rem] overflow-hidden transition-all duration-1000 ease-out z-20 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -32,7 +32,7 @@ export default function ImageGallery() {
 
         {/* Image 2 - Lighthouse */}
         <div
-          className={`relative w-96 h-[32rem] overflow-hidden transition-all duration-1000 ease-out z-20 ${
+          className={`relative w-full max-w-80 h-80 md:h-96 lg:h-[32rem] overflow-hidden transition-all duration-1000 ease-out z-20 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{
@@ -49,7 +49,7 @@ export default function ImageGallery() {
 
         {/* Image 3 - Beach/Boat */}
         <div
-          className={`relative w-96 h-[32rem] overflow-hidden transition-all duration-1000 ease-out z-20 ${
+          className={`relative w-full max-w-80 h-80 md:h-96 lg:h-[32rem] overflow-hidden transition-all duration-1000 ease-out z-20 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{
@@ -66,7 +66,7 @@ export default function ImageGallery() {
 
         {/* Image 4 - Sigiriya Rock */}
         <div
-          className={`relative w-96 h-[32rem] overflow-hidden transition-all duration-1000 ease-out z-20 ${
+          className={`relative w-full max-w-80 h-80 md:h-96 lg:h-[32rem] overflow-hidden transition-all duration-1000 ease-out z-20 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{

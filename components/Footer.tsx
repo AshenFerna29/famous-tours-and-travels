@@ -8,7 +8,7 @@ import { BsTelephoneFill } from 'react-icons/bs';
 
 export default function Footer() {
   return (
-    <footer className="relative w-full h-[380px] mt-20">
+    <footer className="relative w-full h-[380px] mt-20 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -22,7 +22,7 @@ export default function Footer() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 px-6 md:px-20 py-10 flex flex-col gap-6 text-white">
+      <div className="relative z-10 px-6 md:px-20 py-10 flex flex-col gap-6 text-white max-w-full">
         {/* Horizontal Line */}
         <div className="w-full border-t-3 border-white mb-6 mt-40" />
 
@@ -52,13 +52,13 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-bold mb-3 text-white">CONTACT US</h4>
-            <div className="flex items-center gap-2 mb-2">
-              <BsTelephoneFill className="text-white" />
-              <span>+94 77 349 1157</span>
+            <div className="flex items-center gap-2 mb-2 text-sm">
+              <BsTelephoneFill className="text-white flex-shrink-0" />
+              <span className="break-all">+94 77 349 1157</span>
             </div>
-            <div className="flex items-center gap-2">
-              <MdEmail className="text-white text-xl" />
-              <span>famoustoursandtravels@gmail.com</span>
+            <div className="flex items-center gap-2 text-sm">
+              <MdEmail className="text-white text-xl flex-shrink-0" />
+              <span className="break-all">famoustoursandtravels@gmail.com</span>
             </div>
           </div>
         </div>

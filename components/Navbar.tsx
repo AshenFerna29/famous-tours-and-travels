@@ -44,7 +44,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed h-2 z-50 left-20 top-5 px-10 w-[90%] py-10 shadow-md rounded-4xl flex justify-between items-center transition-all duration-300 ${
+      className={`fixed h-2 z-50 left-4 md:left-20 top-5 px-4 md:px-10 w-[95%] md:w-[90%] py-10 shadow-md rounded-4xl flex justify-between items-center transition-all duration-300 ${
         isScrolled
           ? "bg-white/20 backdrop-blur-xl border border-white/30"
           : "bg-white"
@@ -62,7 +62,7 @@ export default function Navbar() {
       />
 
       {/* Nav Links */}
-      <div className="hidden md:flex gap-15 text-sm font-medium text-black ml-16">
+      <div className="hidden md:flex gap-6 lg:gap-15 text-sm font-medium text-black ml-8 lg:ml-16">
         <a href="/home">Home</a>
         <a href="/about-us">About Us</a>
         <a href="/booking">Booking</a>
@@ -71,7 +71,7 @@ export default function Navbar() {
       </div>
 
       {/* Search */}
-      <div className="hidden md:flex items-center relative w-48">
+      <div className="hidden md:flex items-center relative w-32 lg:w-48">
         <Input
           type="text"
           placeholder="Search... "

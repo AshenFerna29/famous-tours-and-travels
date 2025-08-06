@@ -12,7 +12,7 @@ export default function AboutUsPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative w-full h-[70vh]">
+      <div className="relative w-full h-[70vh] overflow-hidden">
         <Image
           src={heroImage}
           alt="mountains"

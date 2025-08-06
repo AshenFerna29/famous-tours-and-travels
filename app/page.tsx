@@ -49,7 +49,7 @@ export default function SplashPage() {
       initial={{ opacity: 1 }}
       animate={{ opacity: fadeOut ? 0 : 1 }}
       transition={{ duration: 1 }}
-      className="relative h-screen w-screen overflow-hidden"
+      className="relative h-screen w-full overflow-hidden"
     >
       {/* 🎬 Background Video */}
       <video
