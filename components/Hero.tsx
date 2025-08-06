@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import ImageGallery from "./ImageGallery";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,7 +19,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-[120vh] flex flex-col justify-start items-center text-center pt-40"
+      className="relative min-h-[140vh] flex flex-col justify-start items-center text-center pt-45"
       style={{
         backgroundImage: `url('/images/home2.jpg')`,
         backgroundSize: "cover",
@@ -53,15 +54,14 @@ export default function Hero() {
       <div className="relative z-10 max-w-4xl">
         {/* Heading (centered) */}
         <h1 className="text-4xl md:text-7xl font-black font-Geomanist text-black">
-          Unwrap The Wonders of <br />
-          Sri Lanka
+          UNWRAP THE WONDERS OF SRI LANKA
         </h1>
         <br />
 
         {/* Paragraph + Button (left aligned) */}
         <p className="text-black font-Geomanist text-30">
-          Famous Tours & Travel is a Sri Lanka-based travel company dedicated to
-          creating memorable and stress free journeys. From cultural tours to
+          Famous Tours and Travel is a Sri Lanka-based travel company dedicated
+          to creating memorable and stress free journeys. From cultural tours to
           scenic getaways, we help you experience the very best of the island.
         </p>
         <button
@@ -78,6 +78,9 @@ export default function Hero() {
           <span className="relative z-10">BOOK NOW</span>
           <ArrowUpRight size={20} className="relative z-10" />
         </button>
+      </div>
+      <div>
+        <ImageGallery />
       </div>
     </section>
   );
