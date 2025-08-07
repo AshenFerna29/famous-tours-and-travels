@@ -42,7 +42,7 @@ export default function ContactUsPage() {
           to help you plan the perfect journey through Sri Lanka’s scenic highlands.
           </p>
         </section>
-        </div>
+      </div>
     <div className="px-6 md:px-20 pt-16 pb-12">
         <div className="grid md:grid-cols-3 gap-12 text-center justify-center items-start">
 

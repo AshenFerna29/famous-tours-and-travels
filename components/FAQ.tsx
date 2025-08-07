@@ -68,14 +68,20 @@ export default function FAQ() {
       <div className="px-6 md:px-40 mt-10 text-sm text-gray-500 z-30 relative">
         Home &gt; <span className="text-black">FAQ</span>
       </div>
+      <div className="px-6 md:px-40 py-12 space-y-12">
+        <section>
+          <h2 className="text-3xl font-bold text-[#F68713] ">Frequently Asked Questions</h2>
+          <p className="text-gray-700 leading-relaxed text-justify pt-5">
+            Have questions about touring Sri Lanka? Here are some common queries and helpful answers to plan your perfect journey.
+          
+          </p>
+        </section>
+      </div>
 
       {/* FAQ Section */}
-      <section className="py-16 px-6 md:px-20 z-30 relative">
+      <section className="py-1 px-6 md:px-20 z-30 relative">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-orange-500 mb-4">FAQ</h2>
-          <p className="text-sm text-gray-600 mb-10">
-            Have questions about touring Sri Lanka? Here are some common queries and helpful answers to plan your perfect journey.
-          </p>
+          
 
           <div className="space-y-4">
             {faqData.map((item, index) => {
