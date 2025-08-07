@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import ImageGallery from "./ImageGallery";
+import BookNowButton from "./Button";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -80,21 +82,18 @@ export default function Hero() {
           scenic getaways, we help you experience the very best of the island.
         </p>
 
-        {/* Button */}
-        <button
-          className={`mt-6 relative bg-[#ffffff] text-black px-6 py-3 rounded-full font-semibold flex items-center gap-2 mx-auto overflow-hidden group transition-all duration-1000 ease-out hover:text-white ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-          style={{
-            transitionDelay: isLoaded ? "0ms" : "500ms",
-          }}
-        >
-          {/* Orange dot positioned below arrow head */}
-          <div className="absolute top-3.5 right-6 w-5 h-5 bg-[#F68713] rounded-full transition-all duration-500 group-hover:scale-[50] z-0"></div>
-
-          <span className="relative z-10">BOOK NOW</span>
-          <ArrowUpRight size={20} className="relative z-10" />
-        </button>
+        {/* Book Now Button */}
+        <div className="mt-6">
+          <BookNowButton
+            isVisible={isLoaded}
+            delay="700ms"
+            size="md"
+            variant="primary"
+            onClick={() => {
+              router.push("/booking");
+            }}
+          />
+        </div>
       </div>
 
       <div className="w-full overflow-hidden">
