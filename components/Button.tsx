@@ -9,6 +9,7 @@ interface BookNowButtonProps {
   delay?: string;
   size?: "sm" | "md" | "lg";
   variant?: "primary" | "secondary";
+  text?: string;
 }
 
 export default function BookNowButton({
@@ -18,6 +19,7 @@ export default function BookNowButton({
   delay = "0ms",
   size = "md",
   variant = "primary",
+  text = "BOOK NOW",
 }: BookNowButtonProps) {
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",
@@ -37,7 +39,7 @@ export default function BookNowButton({
       onClick={onClick}
       className={`relative ${variantClasses[variant]} ${
         sizeClasses[size]
-      } rounded-full font-semibold flex items-center gap-2 mx-auto overflow-hidden group transition-all duration-100 ease-out ${
+      } rounded-full font-semibold flex items-center gap-2 overflow-hidden group transition-all duration-100 ease-out ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       } ${className}`}
       style={{
@@ -49,7 +51,7 @@ export default function BookNowButton({
         className={`absolute top-3.5 right-6 w-5 h-5 ${dotColor} rounded-full transition-all duration-1000 group-hover:scale-[50] z-0`}
       ></div>
 
-      <span className="relative z-10">BOOK NOW</span>
+      <span className="relative z-10">{text}</span>
       <ArrowUpRight size={20} className="relative z-10" />
     </button>
   );

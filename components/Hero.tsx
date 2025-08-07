@@ -83,8 +83,9 @@ export default function Hero() {
         </p>
 
         {/* Book Now Button */}
-        <div className="mt-6">
+        <div className="mt-6 flex justify-center">
           <BookNowButton
+            text="BOOK NOW"
             isVisible={isLoaded}
             delay="700ms"
             size="md"
