@@ -66,7 +66,7 @@ export default function Navbar() {
         <a href="/home">Home</a>
         <a href="/about-us">About Us</a>
         <a href="/booking">Booking</a>
-        <a href="#">FAQ</a>
+        <a href="/faq">FAQ</a>
         <a href="/contact-us">Contact Us</a>
       </div>
 

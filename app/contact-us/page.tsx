@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from '@/components/ContactForm';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import heroImage from "@/public/images/contact-us.jpg";
 
 export default function ContactUsPage() {
   return (
@@ -13,7 +14,7 @@ export default function ContactUsPage() {
       {/* Hero Section */}
       <div className="relative w-full h-[70vh] overflow-hidden">
         <Image
-          src="/images/contact-us.jpg"
+          src={heroImage}
           alt="tress"
           fill
           className="object-cover"
