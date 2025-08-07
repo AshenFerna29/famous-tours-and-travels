@@ -1,8 +1,7 @@
-'use client';
-import Image from 'next/image';
+"use client";
+import Image from "next/image";
 
-import { ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function WelcomeSection() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -12,15 +11,20 @@ export default function WelcomeSection() {
   }, []);
 
   return (
-    <section className="bg-white py-20 px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center overflow-hidden">
-      <div>
+    <section className="bg-white py-25 px-10 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center overflow-hidden">
+      <div className="pl-30">
         <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-          Welcome to <span className="text-[#52ACE4]"><br />Famous Tours and <br /> Travels</span>
+          Welcome to{" "}
+          <span className="text-[#52ACE4]">
+            <br />
+            Famous Tours and <br /> Travels
+          </span>
         </h2>
         <p className="text-gray-500 text-1x2 mb-6 max-w-xl md:pl-0 text-justify">
-          From the misty highlands of Kandy to the golden beaches of Galle, from ancient ruins of Polonnaruwa to
-          the wildlife of Yala National Park, we craft journeys that create lasting memories and deep connections
-          with Sri Lanka’s rich culture and nature.
+          From the misty highlands of Kandy to the golden beaches of Galle, from
+          ancient ruins of Polonnaruwa to the wildlife of Yala National Park, we
+          craft journeys that create lasting memories and deep connections with
+          Sri Lanka’s rich culture and nature.
         </p>
         <button className="group relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-[#52ACE4] font-medium text-white transition-all duration-300 hover:w-32">
           <div className="inline-flex whitespace-nowrap opacity-0 transition-all duration-200 group-hover:-translate-x-3 group-hover:opacity-100 text-white">
@@ -44,17 +48,17 @@ export default function WelcomeSection() {
             </svg>
           </div>
         </button>
-
-
-
       </div>
 
-      <div className="flex justify-center">
+      <div
+        className="flex justify-center"
+        style={{ marginLeft: "40px", marginTop: "-30px" }}
+      >
         <Image
           src="/images/logo.png"
           alt="Famous Tours Logo"
-          width={750}
-          height={750}
+          width={350}
+          height={350}
           className="object-contain max-w-full h-auto"
         />
       </div>

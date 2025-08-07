@@ -68,7 +68,7 @@ export default function Hero() {
 
         {/* Paragraph (animated) */}
         <p
-          className={`text-black font-Geomanist text-lg md:text-2xl transition-all duration-1000 ease-out ${
+          className={`text-black font-Geomanist text-base md:text-lg transition-all duration-1000 ease-out ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{
