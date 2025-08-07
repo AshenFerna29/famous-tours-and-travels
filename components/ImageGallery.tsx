@@ -26,6 +26,7 @@ export default function ImageGallery() {
             src="/images/one.png"
             alt="Wildlife - Peacock"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover"
           />
         </div>
@@ -43,6 +44,7 @@ export default function ImageGallery() {
             src="/images/two.png"
             alt="Lighthouse"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover"
           />
         </div>
@@ -60,6 +62,7 @@ export default function ImageGallery() {
             src="/images/three.png"
             alt="Beach activities"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover"
           />
         </div>
@@ -77,6 +80,7 @@ export default function ImageGallery() {
             src="/images/four.png"
             alt="Sigiriya Rock"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover"
           />
         </div>
