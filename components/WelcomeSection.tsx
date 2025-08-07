@@ -11,16 +11,13 @@ export default function WelcomeSection() {
   }, []);
 
   return (
-    <section className="bg-white py-25 px-10 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center overflow-hidden">
+    <section className="bg-white py-25 md:px-25 grid grid-cols-1 md:grid-cols-2 gap-30 items-center overflow-hidden">
       <div className="pl-30">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight text-black uppercase tracking-tight">
           Welcome to{" "}
-          <span className="text-[#52ACE4]">
-            <br />
-            Famous Tours and <br /> Travels
-          </span>
+          <span className="text-[#000000] block">Famous Tours and Travels</span>
         </h2>
-        <p className="text-gray-500 text-1x2 mb-6 max-w-xl md:pl-0 text-justify">
+        <p className="text-black text-1x2 mb-6 max-w-xl text-justify font-medium leading-relaxed">
           From the misty highlands of Kandy to the golden beaches of Galle, from
           ancient ruins of Polonnaruwa to the wildlife of Yala National Park, we
           craft journeys that create lasting memories and deep connections with
