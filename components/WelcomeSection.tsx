@@ -45,6 +45,7 @@ export default function WelcomeSection() {
           width={350}
           height={350}
           className="object-contain max-w-full h-auto"
+          style={{ width: 'auto', height: '350px' }}
         />
       </div>
     </section>

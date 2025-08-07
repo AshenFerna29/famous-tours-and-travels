@@ -78,6 +78,7 @@ export default function Navbar() {
         width={50}
         height={50}
         className="object-contain"
+        style={{ width: 'auto', height: '50px' }}
       />
 
       {/* Nav Links */}

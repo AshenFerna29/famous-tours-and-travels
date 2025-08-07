@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import footerBg from '@/public/images/footer.png'; // adjust path as needed
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { BsTelephoneFill } from 'react-icons/bs';
@@ -12,9 +11,10 @@ export default function Footer() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={footerBg}
+          src="/images/footer.png"
           alt="Footer Background"
           fill
+          sizes="100vw"
           className="object-cover"
         />
         {/* White top gradient */}
