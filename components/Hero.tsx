@@ -9,7 +9,6 @@ export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Trigger animation when component mounts
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
@@ -54,18 +53,34 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl px-4 mx-auto">
-        {/* Heading (centered) */}
-        <h1 className="text-4xl md:text-6xl font-black font-Geomanist text-black">
+        {/* Heading (animated) */}
+        <h1
+          className={`text-4xl md:text-6xl font-black font-Geomanist text-black transition-all duration-1000 ease-out ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{
+            transitionDelay: isLoaded ? "300ms" : "0ms",
+          }}
+        >
           UNWRAP THE WONDERS OF SRI LANKA
         </h1>
         <br />
 
-        {/* Paragraph + Button (left aligned) */}
-        <p className="text-black font-Geomanist text-lg md:text-30">
+        {/* Paragraph (animated) */}
+        <p
+          className={`text-black font-Geomanist text-lg md:text-2xl transition-all duration-1000 ease-out ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{
+            transitionDelay: isLoaded ? "500ms" : "0ms",
+          }}
+        >
           Famous Tours and Travel is a Sri Lanka-based travel company dedicated
           to creating memorable and stress free journeys. From cultural tours to
           scenic getaways, we help you experience the very best of the island.
         </p>
+
+        {/* Button */}
         <button
           className={`mt-6 relative bg-[#ffffff] text-black px-6 py-3 rounded-full font-semibold flex items-center gap-2 mx-auto overflow-hidden group transition-all duration-1000 ease-out hover:text-white ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -75,12 +90,13 @@ export default function Hero() {
           }}
         >
           {/* Orange dot positioned below arrow head */}
-          <div className="absolute top-3.5 right-6 w-5 h-5 bg-orange-500 rounded-full transition-all duration-500 group-hover:scale-[50] z-0"></div>
+          <div className="absolute top-3.5 right-6 w-5 h-5 bg-[#F68713] rounded-full transition-all duration-500 group-hover:scale-[50] z-0"></div>
 
           <span className="relative z-10">BOOK NOW</span>
           <ArrowUpRight size={20} className="relative z-10" />
         </button>
       </div>
+
       <div className="w-full overflow-hidden">
         <ImageGallery />
       </div>
