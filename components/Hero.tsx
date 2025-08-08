@@ -12,14 +12,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const rotatingItems = [
-  " ANCIENT RUINS ",
   " PRISTINE BEACHES ",
   " VIBRANT CULTURE ",
   " LUSH RAINFORESTS ",
   " EXOTIC WILDLIFE ",
   " MISTY MOUNTAINS ",
-  " HIDDEN GEMS ",
-] as const;
+];
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -67,14 +65,28 @@ export default function Hero() {
       gsap.fromTo(
         ".discover-word",
         { y: 40, opacity: 0, scale: 0.95 },
-        { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power3.out", delay: 0.3 }
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "power3.out",
+          delay: 0.3,
+        }
       );
 
       // Rotating text chip animation on each change
       gsap.fromTo(
         ".rotating-chip",
         { y: 20, opacity: 0, scale: 0.9 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)", delay: 0.6 }
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "back.out(1.7)",
+          delay: 0.6,
+        }
       );
 
       // Respect reduced motion
@@ -102,7 +114,10 @@ export default function Hero() {
         />
       </div>
 
-      <div className="pointer-events-none absolute inset-0 -z-10" style={{ backdropFilter: "none" }} />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{ backdropFilter: "none" }}
+      />
 
       {/* Clouds */}
       <Image
@@ -134,17 +149,17 @@ export default function Hero() {
           } whitespace-nowrap`}
           style={{ transitionDelay: isLoaded ? "300ms" : "0ms" }}
         >
-          <span className="discover-word inline-block">DISCOVER{" "}</span>
+          <span className="discover-word inline-block">DISCOVER </span>
 
           {/* Rotating text chip */}
           <span className="inline-block align-baseline rotating-chip">
             <RotatingText
-              texts={rotatingItems as unknown as string[]}
-              mainClassName="inline-flex px-2 bg-[#fda720] sm:px-2 md:px-3 text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg whitespace-nowrap align-baseline"
+              texts={rotatingItems}
+              mainClassName="px-2 sm:px-2 md:px-3 text-[#fda720] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
               staggerFrom={"last"}
-              initial={{ y: "100%", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: "-120%", opacity: 0 }}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
               staggerDuration={0.025}
               splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
