@@ -76,7 +76,7 @@ const SuccessNotification: React.FC<SuccessNotificationProps> = ({
           {/* Progress bar */}
           <div className="mt-3 bg-gray-200 rounded-full h-1">
             <div
-              className="bg-[#F68713] h-1 rounded-full transition-all duration-[5000ms] ease-linear"
+              className="bg-[#fda720] h-1 rounded-full transition-all duration-[5000ms] ease-linear"
               style={{ width: show ? "0%" : "100%" }}
             ></div>
           </div>

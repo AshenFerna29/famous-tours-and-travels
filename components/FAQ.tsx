@@ -69,7 +69,7 @@ export default function FAQ() {
       </div>
       <div className="px-6 md:px-40 py-12 space-y-12">
         <section>
-          <h2 className="text-3xl font-bold text-[#F68713] ">
+          <h2 className="text-3xl font-bold text-[#fda720] ">
             Frequently Asked Questions
           </h2>
           <p className="text-gray-700 leading-relaxed text-justify pt-5">

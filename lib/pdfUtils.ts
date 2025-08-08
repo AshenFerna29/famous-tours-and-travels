@@ -14,7 +14,7 @@ export const generateBookingPDF = (bookingData: BookingData): jsPDF => {
   const doc = new jsPDF();
   
   // Set up colors
-  const primaryColor: [number, number, number] = [246, 135, 19]; // #F68713
+  const primaryColor: [number, number, number] = [253, 167, 32]; // #fda720
   const blackColor: [number, number, number] = [0, 0, 0];
   const grayColor: [number, number, number] = [128, 128, 128];
   

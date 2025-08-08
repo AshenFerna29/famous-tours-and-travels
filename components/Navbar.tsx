@@ -87,14 +87,14 @@ export default function Navbar() {
           <div key={index} className="relative group">
             <a
               href={item.href}
-              className={`relative transition-all duration-300 ease-in-out hover:text-orange-500 ${
-                isActiveLink(item.href) ? "text-orange-500" : "text-black"
+              className={`relative transition-all duration-300 ease-in-out hover:text-[#fda720] ${
+                isActiveLink(item.href) ? "text-[#fda720]" : "text-black"
               }`}
             >
               {item.label}
               {/* Sticky animation underline */}
               <div
-                className={`absolute -bottom-1 left-0 h-0.5 bg-orange-500 transition-all duration-300 ease-in-out ${
+                className={`absolute -bottom-1 left-0 h-0.5 bg-[#fda720] transition-all duration-300 ease-in-out ${
                   isActiveLink(item.href) ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               />

@@ -95,6 +95,7 @@ export default function AboutUsPage() {
         />
       </div>
 
+
       {/* Divider (bold + aligned with content) */}
       <div className="px-6 md:px-40 my-10 reveal-text">
         {/* Tailwind doesn’t have border-t-1; use border-t (1px) or border-t-2/4 */}
