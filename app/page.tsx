@@ -98,6 +98,7 @@ export default function SplashPage() {
             alt="Famous Tours & Travels"
             width={320}
             height={200}
+            style={{ width: 'auto', height: '200px' }}
           />
         </motion.div>
       </div>

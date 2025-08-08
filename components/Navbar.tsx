@@ -4,11 +4,30 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const pathname = usePathname();
+
+  // Navigation items
+  const navItems = [
+    { href: "/home", label: "Home" },
+    { href: "/about-us", label: "About Us" },
+    { href: "/booking", label: "Booking" },
+    { href: "#", label: "FAQ" },
+    { href: "#", label: "Contact Us" },
+  ];
+
+  // Function to check if a link is active
+  const isActiveLink = (href: string) => {
+    if (href === "#") return false;
+    // Handle root path for home
+    if (href === "/home" && pathname === "/") return true;
+    return pathname === href;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,18 +75,32 @@ export default function Navbar() {
       <Image
         src="/images/logo.png"
         alt="Logo"
-        width={100}
-        height={100}
+        width={50}
+        height={50}
         className="object-contain"
+        style={{ width: 'auto', height: '50px' }}
       />
 
       {/* Nav Links */}
       <div className="hidden md:flex gap-6 lg:gap-15 text-sm font-medium text-black ml-8 lg:ml-16">
-        <a href="/home">Home</a>
-        <a href="/about-us">About Us</a>
-        <a href="/booking">Booking</a>
-        <a href="/faq">FAQ</a>
-        <a href="/contact-us">Contact Us</a>
+        {navItems.map((item, index) => (
+          <div key={index} className="relative group">
+            <a
+              href={item.href}
+              className={`relative transition-all duration-300 ease-in-out hover:text-orange-500 ${
+                isActiveLink(item.href) ? "text-orange-500" : "text-black"
+              }`}
+            >
+              {item.label}
+              {/* Sticky animation underline */}
+              <div
+                className={`absolute -bottom-1 left-0 h-0.5 bg-orange-500 transition-all duration-300 ease-in-out ${
+                  isActiveLink(item.href) ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              />
+            </a>
+          </div>
+        ))}
       </div>
 
       {/* Search */}
