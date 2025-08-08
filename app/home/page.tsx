@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import WelcomeSection from "@/components/WelcomeSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
@@ -11,7 +12,7 @@ export default function HomePage() {
       <Hero />
       <WelcomeSection />
       <WhyChooseUs />
-
+      <Gallery />
       <Footer />
     </>
   );
