@@ -11,7 +11,7 @@ export default function AboutUsPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative w-full h-[80vh] overflow-hidden">
+      <div className="relative w-full h-[70vh] overflow-hidden">
         <Image
           src={heroImage}
           alt="Beach"
@@ -19,10 +19,10 @@ export default function AboutUsPage() {
           className="object-cover"
           priority
         />
-        
+
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-5xl font-bold text-white drop-shadow-md text-center">
-            About Us{" "}
+          <h1 className="text-8xl font-bold text-white drop-shadow-md text-center">
+            About Us
           </h1>
         </div>
       </div>

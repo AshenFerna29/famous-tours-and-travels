@@ -17,8 +17,8 @@ export default function Navbar() {
     { href: "/home", label: "Home" },
     { href: "/about-us", label: "About Us" },
     { href: "/booking", label: "Booking" },
-    { href: "#", label: "FAQ" },
-    { href: "#", label: "Contact Us" },
+    { href: "/faq", label: "FAQ" },
+    { href: "/contact-us", label: "Contact Us" },
   ];
 
   // Function to check if a link is active
@@ -78,7 +78,7 @@ export default function Navbar() {
         width={50}
         height={50}
         className="object-contain"
-        style={{ width: 'auto', height: '50px' }}
+        style={{ width: "auto", height: "50px" }}
       />
 
       {/* Nav Links */}
