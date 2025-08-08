@@ -1,36 +1,105 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import ImageGallery from "./ImageGallery";
+import BookNowButton from "./Button";
+
 export default function Hero() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
-      className="relative h-screen flex flex-col justify-center items-center text-center px-4"
+      className="relative min-h-[140vh] flex flex-col justify-start items-center text-center pt-45 overflow-hidden"
       style={{
-        backgroundImage: `url('/images/sigiriya.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundImage: `url('/images/home2.jpg')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
       }}
     >
-      {/* Top fade overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-transparent" />
+      {/* Animated Cloud */}
+      <Image
+        src="/images/cloud1.png"
+        alt="Cloud"
+        width={1200}
+        height={800}
+        className={`absolute z-5 transition-all duration-[2000ms] ease-out ${
+          isLoaded ? "left-1/4 transform -translate-x-1/2" : "-left-full"
+        }`}
+        style={{ maxWidth: "50vw" }}
+      />
+
+      {/* Second Animated Cloud (right to left, smaller) */}
+      <Image
+        src="/images/cloud1.png"
+        alt="Cloud"
+        width={800}
+        height={533}
+        className={`absolute top-10 z-4 transition-all duration-[2500ms] ease-out ${
+          isLoaded ? "right-1/4 transform translate-x-1/2" : "-right-full"
+        }`}
+        style={{ maxWidth: "40vw" }}
+      />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl">
-        {/* Heading (centered) */}
-        <h1 className="text-4xl md:text-6xl font-bold font-poppins text-black">
-          Unwrap The Wonders of <br />
-          <span className="text-orange-500">Sri Lanka</span>
+      <div className="relative z-10 max-w-4xl px-4 mx-auto">
+        {/* Heading (animated) */}
+        <h1
+          className={`text-4xl md:text-6xl font-black font-Geomanist text-black transition-all duration-1000 ease-out ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{
+            transitionDelay: isLoaded ? "300ms" : "0ms",
+          }}
+        >
+          UNWRAP THE WONDERS OF SRI LANKA
         </h1>
-        <br /><br /><br />
+        <br />
 
-        {/* Paragraph + Button (left aligned) */}
-          <p className="text-black font-poppins text-lg">
-            <span className="font-bold">Famous Tours & Travel</span> is a Sri Lanka-based travel company dedicated
-            to creating memorable and stress free journeys. From cultural tours to scenic getaways,
-            we help you experience the very best of the island.
-          </p>
-          <button className="mt-6 bg-[#52ACE4] hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold">
-            BOOK NOW
-          </button>
+        {/* Paragraph (animated) */}
+        <p
+          className={`text-black font-Geomanist text-base md:text-lg transition-all duration-1000 ease-out ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{
+            transitionDelay: isLoaded ? "500ms" : "0ms",
+          }}
+        >
+          Famous Tours and Travel is a Sri Lanka-based travel company dedicated
+          to creating memorable and stress free journeys. From cultural tours to
+          scenic getaways, we help you experience the very best of the island.
+        </p>
+
+        {/* Book Now Button */}
+        <div className="mt-6 flex justify-center">
+          <BookNowButton
+            text="BOOK NOW"
+            isVisible={isLoaded}
+            delay="700ms"
+            size="md"
+            variant="primary"
+            onClick={() => {
+              router.push("/booking");
+            }}
+          />
         </div>
+      </div>
+
+      <div className="w-full overflow-hidden">
+        <ImageGallery />
+      </div>
     </section>
   );
 }

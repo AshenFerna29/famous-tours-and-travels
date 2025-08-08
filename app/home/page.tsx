@@ -1,6 +1,8 @@
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import WelcomeSection from '@/components/WelcomeSection';
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import WelcomeSection from "@/components/WelcomeSection";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Footer from "@/components/Footer";
 
 export default function HomePage() {
   return (
@@ -8,6 +10,9 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <WelcomeSection />
+      <WhyChooseUs />
+
+      <Footer />
     </>
   );
 }

@@ -118,9 +118,35 @@
   * {
     @apply border-border outline-ring/50;
   }
-body {
-  background-color: var(--color-background, #fff);
-  color: var(--color-foreground, #222);
-  font-family: 'Poppins', var(--font-sans, sans-serif);
-}
+  
+  html {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  
+  body {
+    background-color: var(--color-background, #fff);
+    color: var(--color-foreground, #222);
+    font-family: "Geomanist", "Geomanist Fallback", var(--font-sans, sans-serif);
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
+  }
+  
+  /* Prevent horizontal overflow on all elements */
+  * {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  
+  /* Ensure all main containers respect viewport width */
+  .container, section, div, main, article, aside, header, footer, nav {
+    max-width: 100%;
+  }
+  
+  /* Prevent images from overflowing */
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
 }
