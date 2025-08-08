@@ -66,7 +66,7 @@ export default function ContactForm() {
       <button
         type="submit"
         className="px-6 py-2 rounded-md text-white bg-blue-500 transition-all duration-300 ease-in-out
-                  hover:bg-[#F68713] hover:shadow-xl hover:-translate-y-0.5"
+                  hover:bg-[#fda720] hover:shadow-xl hover:-translate-y-0.5"
       >
         Submit
       </button>

@@ -35,7 +35,7 @@ export default function ContactUsPage() {
       {/* Info Section */}
       <div className="px-6 md:px-40 py-12 space-y-12">
         <section>
-          <h2 className="text-3xl font-bold text-[#F68713] ">Contact Us</h2>
+          <h2 className="text-3xl font-bold text-[#fda720] ">Contact Us</h2>
           <p className="text-gray-700 leading-relaxed text-justify pt-5">
             Reach out via phone, email, or visit our travel agency or operator offices.
           Whether you need a quote, consultation, or just have questions, we’re here

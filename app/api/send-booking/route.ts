@@ -26,7 +26,7 @@ function generateBookingPDF(bookingData: BookingData): Buffer {
   
   // Add company logo/header
   doc.setFontSize(20);
-  doc.setTextColor(246, 135, 19); // #F68713
+  doc.setTextColor(253, 167, 32); // #fda720
   doc.text('Famous Tours & Travels', 20, 30);
   
   doc.setFontSize(16);
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
       subject: 'Booking Confirmation - Famous Tours & Travels',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background-color: #F68713; color: white; padding: 20px; text-align: center;">
+          <div style="background-color: #fda720; color: white; padding: 20px; text-align: center;">
             <h1>Famous Tours & Travels</h1>
             <h2>Booking Confirmation</h2>
           </div>
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
             <p>Thank you for your booking request! We have received your information and will contact you within 24 hours to confirm your booking details.</p>
             
             <div style="background-color: white; padding: 15px; border-radius: 5px; margin: 20px 0;">
-              <h3 style="color: #F68713;">Booking Details:</h3>
+              <h3 style="color: #fda720;">Booking Details:</h3>
               <ul style="list-style: none; padding: 0;">
                 <li><strong>Tour Package:</strong> ${bookingData.package}</li>
                 <li><strong>Number of Guests:</strong> ${bookingData.guests}</li>

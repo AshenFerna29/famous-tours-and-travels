@@ -35,7 +35,7 @@ export default function AboutUsPage() {
       {/* Content Section */}
       <div className="px-6 md:px-40 py-12 space-y-12">
         <section>
-          <h2 className="text-3xl font-bold text-[#F68713] ">Bookings</h2>
+          <h2 className="text-3xl font-bold text-[#fda720] ">Bookings</h2>
           <p className="text-gray-700 leading-relaxed text-justify pt-5">
             Secure your spot on one of our unforgettable tours across Sri Lanka.
             Choose your preferred package, travel dates, and group size and

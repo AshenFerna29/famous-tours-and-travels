@@ -32,7 +32,7 @@ export default function BookNowButton({
     secondary: "bg-[#52ACE4] text-white hover:text-black",
   };
 
-  const dotColor = variant === "primary" ? "bg-[#F68713]" : "bg-white";
+  const dotColor = variant === "primary" ? "bg-[#fda720]" : "bg-white";
 
   return (
     <button

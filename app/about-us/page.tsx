@@ -35,7 +35,7 @@ export default function AboutUsPage() {
       {/* Content Section */}
       <div className="px-6 md:px-40 py-12 space-y-12">
         <section>
-          <h2 className="text-3xl font-bold text-[#F68713] ">About Us</h2>
+          <h2 className="text-3xl font-bold text-[#fda720] ">About Us</h2>
           <p className="text-gray-700 leading-relaxed text-justify pt-5">
             The journey began years ago when I worked as an executive personnel
             at the Abans counter, where I had the privilege of regularly
@@ -49,7 +49,7 @@ export default function AboutUsPage() {
         </section>
 
         <section>
-          <h2 className="text-3xl font-bold text-[#F68713] mb-4">
+          <h2 className="text-3xl font-bold text-[#fda720] mb-4">
             Why I Started
           </h2>
           <p className="text-gray-700 leading-relaxed pt-5">

@@ -433,7 +433,7 @@ const TourBookingForm: React.FC = () => {
               className={`bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-bblue-600 transition ${
                 isSubmitting
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-[#F68713] hover:bg-[#e67600] text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  : "bg-[#fda720] hover:bg-[#e6940d] text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               }`}
             >
               {isSubmitting ? (
