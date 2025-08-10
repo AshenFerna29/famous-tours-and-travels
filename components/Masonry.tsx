@@ -74,7 +74,7 @@ const preloadImages = async (urls: string[]): Promise<void> => {
 interface Item {
   id: string;
   img: string;
-  url: string;
+  url?: string;
   height: number;
 }
 
@@ -320,9 +320,9 @@ const Masonry: React.FC<MasonryProps> = ({
         <div
           key={item.id}
           data-key={item.id}
-          className="absolute box-content cursor-pointer"
+          className={`absolute box-content ${item.url ? 'cursor-pointer' : 'cursor-default'}`}
           style={{ willChange: "transform, width, height, opacity" }}
-          onClick={() => window.open(item.url, "_blank", "noopener")}
+          onClick={item.url ? () => window.open(item.url, "_blank", "noopener") : undefined}
           onMouseEnter={(e) => handleMouseEnter(item.id, e.currentTarget)}
           onMouseLeave={(e) => handleMouseLeave(item.id, e.currentTarget)}
         >
