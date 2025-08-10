@@ -6,63 +6,48 @@ const Gallery = () => {
   const items = [
     {
       id: "1",
-      img: "https://picsum.photos/id/1015/600/900?grayscale",
-      url: "#",
+      img: "/images/gallery/gallery-1.jpg",
       height: 400,
     },
     {
       id: "2",
-      img: "https://picsum.photos/id/1011/600/750?grayscale",
-      url: "#",
+      img: "/images/gallery/gallery-2.jpg",
       height: 250,
     },
     {
       id: "3",
-      img: "https://picsum.photos/id/1020/600/800?grayscale",
-      url: "#",
+      img: "/images/gallery/gallery-3.jpg",
       height: 600,
     },
     {
       id: "4",
-      img: "https://picsum.photos/id/1025/600/700?grayscale",
-      url: "#",
+      img: "/images/gallery/gallery-4.jpg",
       height: 350,
     },
     {
       id: "5",
-      img: "https://picsum.photos/id/1043/600/900?grayscale",
-      url: "#",
+      img: "/images/gallery/gallery-5.jpg",
       height: 450,
     },
     {
       id: "6",
-      img: "https://picsum.photos/id/1044/600/600?grayscale",
-      url: "#",
+      img: "/images/gallery/gallery-6.jpg",
       height: 300,
     },
     {
       id: "7",
-      img: "https://picsum.photos/id/1051/600/800?grayscale",
-      url: "#",
+      img: "/images/gallery/gallery-7.jpg",
       height: 400,
     },
     {
       id: "8",
-      img: "https://picsum.photos/id/1062/600/750?grayscale",
-      url: "#",
+      img: "/images/gallery/gallery-8.jpg",
       height: 375,
     },
     {
       id: "9",
-      img: "https://picsum.photos/id/1074/600/850?grayscale",
-      url: "#",
+      img: "/images/gallery/gallery-9.jpg",
       height: 425,
-    },
-    {
-      id: "10",
-      img: "https://picsum.photos/id/1084/600/700?grayscale",
-      url: "#",
-      height: 350,
     },
   ];
 
