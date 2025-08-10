@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -15,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutUsPage() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (!pageRef.current) return;
@@ -28,7 +30,7 @@ export default function AboutUsPage() {
           y: 0,
           opacity: 1,
           duration: 0.8,
-          delay: 0.2, 
+          delay: 0.2,
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
@@ -46,17 +48,30 @@ export default function AboutUsPage() {
 
       {/* Hero Section */}
       <div className="relative w-full h-[70vh] overflow-hidden">
-        <Image src={heroImage} alt="Beach" fill className="object-cover" priority />
+        <Image
+          src={heroImage}
+          alt="Beach"
+          fill
+          className="object-cover"
+          priority
+        />
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-md text-center">
+          <h1 className="text-8xl font-black text-white text-center">
             About Us
           </h1>
         </div>
       </div>
 
       {/* Breadcrumb */}
-      <div className="px-6 md:px-40 mt-10 text-sm text-gray-500 reveal-text">
-        Home &gt; <span className="text-black">About Us</span>
+      <div className="px-6 md:px-40 mt-10 text-sm text-gray-500">
+        <button
+          onClick={() => router.push("/home")}
+          className="hover:text-[#fda720] transition-colors duration-200 cursor-pointer"
+        >
+          Home
+        </button>
+        {" > "}
+        <span className="text-black">About Us</span>
       </div>
 
       {/* About Us Section */}
@@ -65,7 +80,7 @@ export default function AboutUsPage() {
           label="About Us"
           titleItalic="Our Story"
           paragraphs={[
-            "The journey began years ago when I worked as an executive personnel at the Abans counter, where I had the privilege of regularly assisting international airline crews like Emirates and others. That experience didn’t just hone my professional skills—it ignited a passion for hospitality, cultural exchange, and travel. Working closely with people from different parts of the world gave me a deep appreciation for the stories each traveler carries and the joy of being part of their journey, even in the smallest way."
+            "The journey began years ago when I worked as an executive personnel at the Abans counter, where I had the privilege of regularly assisting international airline crews like Emirates and others. That experience didn’t just hone my professional skills—it ignited a passion for hospitality, cultural exchange, and travel. Working closely with people from different parts of the world gave me a deep appreciation for the stories each traveler carries and the joy of being part of their journey, even in the smallest way.",
           ]}
           images={[
             { src: "/images/about/about-1.jpg", alt: "Portrait 1" },
@@ -83,7 +98,7 @@ export default function AboutUsPage() {
           label="Why I Started"
           titleItalic="The Inspiration"
           paragraphs={[
-            "With that passion deeply rooted, I realized I didn’t want to just help people in transit—I wanted to create the journey itself. I started this tour business to give travelers more than a destination—I wanted to offer them memories, moments, and meaningful connections. Sri Lanka has so much to offer, from its rich culture to breathtaking landscapes, and I felt it was time to become a storyteller of my own land, one tour at a time."
+            "With that passion deeply rooted, I realized I didn’t want to just help people in transit—I wanted to create the journey itself. I started this tour business to give travelers more than a destination—I wanted to offer them memories, moments, and meaningful connections. Sri Lanka has so much to offer, from its rich culture to breathtaking landscapes, and I felt it was time to become a storyteller of my own land, one tour at a time.",
           ]}
           images={[
             { src: "/images/why/why-1.jpg", alt: "Portrait A" },
@@ -94,7 +109,6 @@ export default function AboutUsPage() {
           ]}
         />
       </div>
-
 
       {/* Divider (bold + aligned with content) */}
       <div className="px-6 md:px-40 my-10 reveal-text">

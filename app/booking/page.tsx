@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Footer from "@/components/Footer";
@@ -7,6 +8,8 @@ import Form from "@/components/TourBookingForm";
 import heroImage from "@/public/images/booking-hero.jpg";
 
 export default function AboutUsPage() {
+  const router = useRouter();
+
   return (
     <>
       <Navbar />
@@ -29,7 +32,14 @@ export default function AboutUsPage() {
 
       {/* Breadcrumb */}
       <div className="px-6 md:px-40 mt-10 text-sm text-gray-500">
-        Home &gt; <span className="text-black">Booking</span>
+        <button
+          onClick={() => router.push("/home")}
+          className="hover:text-[#fda720] transition-colors duration-200 cursor-pointer"
+        >
+          Home
+        </button>
+        {" > "}
+        <span className="text-black">Booking</span>
       </div>
 
       {/* Content Section */}
