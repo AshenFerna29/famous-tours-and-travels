@@ -56,7 +56,7 @@ export default function AboutUsPage() {
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-md text-center">
+          <h1 className="text-8xl font-black text-white text-center">
             About Us
           </h1>
         </div>
