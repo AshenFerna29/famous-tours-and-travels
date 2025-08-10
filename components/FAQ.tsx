@@ -67,8 +67,8 @@ export default function FAQ() {
 
       {/* Breadcrumb */}
       <div className="px-6 md:px-40 mt-10 text-sm text-gray-500 z-30 relative">
-        <button 
-          onClick={() => router.push('/home')}
+        <button
+          onClick={() => router.push("/home")}
           className="hover:text-[#fda720] transition-colors duration-200 cursor-pointer"
         >
           Home
