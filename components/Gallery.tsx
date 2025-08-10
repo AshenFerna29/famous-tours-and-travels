@@ -54,18 +54,18 @@ const Gallery = () => {
   return (
     <section className="py-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-4xl font-bold text-black mb-4 text-left">
+        <div>
+          <h2 className="text-4xl font-bold text-black mb-4 ml-15 text-left">
             Moments from the Journey
           </h2>
-          <p className="text-lg text-black max-w-2xl text-left">
+          <p className="text-lg text-black max-w-2xl text-left ml-15">
             Explore snapshots from our recent tours real memories made by real
             travelers. Discover the beauty, adventure, and joy captured along
             the way
           </p>
         </div>
 
-        <div className="h-[800px] w-full">
+        <div className="h-[800px] w-full p-15">
           <Masonry
             items={items}
             ease="power3.out"

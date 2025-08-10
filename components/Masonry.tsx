@@ -320,9 +320,15 @@ const Masonry: React.FC<MasonryProps> = ({
         <div
           key={item.id}
           data-key={item.id}
-          className={`absolute box-content ${item.url ? 'cursor-pointer' : 'cursor-default'}`}
+          className={`absolute box-content ${
+            item.url ? "cursor-pointer" : "cursor-default"
+          }`}
           style={{ willChange: "transform, width, height, opacity" }}
-          onClick={item.url ? () => window.open(item.url, "_blank", "noopener") : undefined}
+          onClick={
+            item.url
+              ? () => window.open(item.url, "_blank", "noopener")
+              : undefined
+          }
           onMouseEnter={(e) => handleMouseEnter(item.id, e.currentTarget)}
           onMouseLeave={(e) => handleMouseLeave(item.id, e.currentTarget)}
         >

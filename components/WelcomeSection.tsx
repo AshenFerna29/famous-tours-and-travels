@@ -105,7 +105,7 @@ export default function WelcomeSection() {
       ref={rootRef}
       className="py-25 px-10 md:px-35 grid grid-cols-1 md:grid-cols-2 gap-50 items-center overflow-hidden"
     >
-      <div className="welcome-left pl-12">
+      <div>
         <h2 className="welcome-title text-4xl md:text-5xl font-black mb-6 leading-tight text-black uppercase tracking-tight">
           Welcome to{" "}
           <span className="text-[#000000] block">Famous Tours and Travels</span>
@@ -129,7 +129,10 @@ export default function WelcomeSection() {
         </div>
       </div>
 
-      <div className="flex justify-center" style={{ marginLeft: "40px", marginTop: "-30px" }}>
+      <div
+        className="flex justify-center"
+        style={{ marginLeft: "40px", marginTop: "-30px" }}
+      >
         <Image
           src="/images/logo.png"
           alt="Famous Tours Logo"
