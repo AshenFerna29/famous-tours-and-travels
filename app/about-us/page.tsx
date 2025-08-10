@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Footer from "@/components/Footer";
-import heroImage from "@/public/images/about-hero.jpg";
+import heroImage from "@/public/images/About-hero.jpg";
 import MissionVision from "@/components/MissionVision";
 import AboutCollageSection from "@/components/AboutCollageSection";
 

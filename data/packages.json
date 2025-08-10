@@ -1,0 +1,74 @@
+[
+  {
+    "id": "hill-country-adventure",
+    "title": "Hill Country Adventure",
+    "days": 5,
+    "type": "Adventure Tour",
+    "description": "Scenic tour through Kandy, Knuckles, and Nuwara Eliya. Misty lakes, tea trails, and cultural highlights in the Highlands.",
+    "image": "/images/packages/hill-country.jpg"
+  },
+  {
+    "id": "ceylon-romance",
+    "title": "Ceylon Romance",
+    "days": 7,
+    "type": "Honeymoon Tour",
+    "description": "Honeymoon escape through Sri Lanka’s most romantic spots—beaches, tea hills, safaris, and candlelit moments together.",
+    "image": "/images/packages/romance.jpg"
+  },
+  {
+    "id": "ancient-ceylon",
+    "title": "Ancient Ceylon",
+    "days": 6,
+    "type": "Cultural Tour",
+    "description": "Cultural journey through Sri Lanka’s ancient kingdoms. Discover sacred cities, iconic temples, and timeless heritage.",
+    "image": "/images/packages/ancient.jpg"
+  },
+  {
+    "id": "tranquil-escape",
+    "title": "Tranquil Escape",
+    "days": 6,
+    "type": "Wellness Tour",
+    "description": "Wellness retreat along Sri Lanka’s coast. Rejuvenate with Ayurveda, yoga, and serene beachfront bliss.",
+    "image": "/images/packages/tranquil.jpg"
+  },
+  {
+    "id": "wild-lanka",
+    "title": "Wild Lanka",
+    "days": 6,
+    "type": "Wildlife Tour",
+    "description": "Wildlife adventure across top national parks. Spot elephants, leopards, and exotic birds in their natural habitats.",
+    "image": "/images/packages/wild-lanka.jpg"
+  },
+  {
+    "id": "ceylon-on-a-budget",
+    "title": "Ceylon on a Budget",
+    "days": 5,
+    "type": "Budget Tour",
+    "description": "Adventure exploring Sri Lanka affordably: signature culture, nature, and scenic travel without overspending.",
+    "image": "/images/packages/budget.jpg"
+  },
+  {
+    "id": "luxury-island-retreat",
+    "title": "Luxury Island Retreat",
+    "days": 5,
+    "type": "Luxury Tour",
+    "description": "Indulgent escape through Sri Lanka in style. Enjoy VIP service, 5‑star stays, and unforgettable experiences.",
+    "image": "/images/packages/luxury.jpg"
+  },
+  {
+    "id": "eco-ceylon",
+    "title": "Eco Ceylon",
+    "days": 5,
+    "type": "Eco‑Tourism Tour",
+    "description": "Eco‑tour through rainforests, rivers, and wildlife parks. Stay green with nature walks, safaris, and eco‑lodge stays.",
+    "image": "/images/packages/eco.jpg"
+  },
+  {
+    "id": "family-fun-sri-lanka",
+    "title": "Family Fun in Sri Lanka",
+    "days": 5,
+    "type": "Family Tour",
+    "description": "Adventure packed with kid‑friendly sights and safaris. Perfect for families to explore nature, wildlife, and culture together.",
+    "image": "/images/packages/family.jpg"
+  }
+]

@@ -14,7 +14,7 @@ export default function MissionVision() {
             <Image
               src="/images/mission-1.jpg"
               alt="Airplane window"
-              fill                    /* makes it use the wrapper size */
+              fill /* makes it use the wrapper size */
               className="object-cover"
               priority
             />
@@ -25,12 +25,11 @@ export default function MissionVision() {
         <div className="md:col-start-2 md:col-span-6 md:row-start-1 flex justify-center md:justify-start">
           <div className="max-w-[460px] text-center md:text-left">
             <p className="text-[15px] tracking-[0.2em] uppercase mb-2 text-[#fda720]">
-
               Our Mission
             </p>
             <p className="italic text-[16px] md:text-[25px] leading-8 text-neutral-800">
-              "Through travel, we connect people to positive experiences,
-              enabling them to see the world differently."
+              &ldquo;Through travel, we connect people to positive experiences,
+              enabling them to see the world differently.&rdquo;
             </p>
           </div>
         </div>
@@ -54,7 +53,8 @@ export default function MissionVision() {
               Our Vision
             </p>
             <p className="italic text-[16px] md:text-[25px] leading-8 text-neutral-800">
-              "To create a world where everyone is encouraged to travel."
+              &ldquo;To create a world where everyone is encouraged to
+              travel.&rdquo;
             </p>
           </div>
         </div>
