@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import heroImage from "@/public/images/faq.jpg";
 
@@ -38,6 +39,7 @@ const faqData = [
 ];
 
 export default function FAQ() {
+  const router = useRouter();
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First FAQ open
 
   const toggle = (index: number) => {
@@ -65,7 +67,14 @@ export default function FAQ() {
 
       {/* Breadcrumb */}
       <div className="px-6 md:px-40 mt-10 text-sm text-gray-500 z-30 relative">
-        Home &gt; <span className="text-black">FAQ</span>
+        <button 
+          onClick={() => router.push('/home')}
+          className="hover:text-[#fda720] transition-colors duration-200 cursor-pointer"
+        >
+          Home
+        </button>
+        {" > "}
+        <span className="text-black">FAQ</span>
       </div>
       <div className="px-6 md:px-40 py-12 space-y-12">
         <section>

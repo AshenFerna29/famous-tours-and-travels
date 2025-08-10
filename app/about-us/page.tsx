@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -15,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutUsPage() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (!pageRef.current) return;
@@ -55,8 +57,15 @@ export default function AboutUsPage() {
       </div>
 
       {/* Breadcrumb */}
-      <div className="px-6 md:px-40 mt-10 text-sm text-gray-500 reveal-text">
-        Home &gt; <span className="text-black">About Us</span>
+      <div className="px-6 md:px-40 mt-10 text-sm text-gray-500">
+        <button 
+          onClick={() => router.push('/home')}
+          className="hover:text-[#fda720] transition-colors duration-200 cursor-pointer"
+        >
+          Home
+        </button>
+        {" > "}
+        <span className="text-black">About Us</span>
       </div>
 
       {/* About Us Section */}

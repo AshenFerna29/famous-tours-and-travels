@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Image from 'next/image';
 
 import Navbar from "@/components/Navbar";
@@ -7,6 +10,8 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import heroImage from "@/public/images/contact-us.jpg";
 
 export default function ContactUsPage() {
+  const router = useRouter();
+  
   return (
     <>
     <Navbar />
@@ -29,7 +34,14 @@ export default function ContactUsPage() {
 
       {/* Breadcrumb */}
       <div className="px-6 md:px-40 mt-10 text-sm text-gray-500">
-        Home &gt; <span className="text-black">Contact Us</span>
+        <button 
+          onClick={() => router.push('/home')}
+          className="hover:text-[#fda720] transition-colors duration-200 cursor-pointer"
+        >
+          Home
+        </button>
+        {" > "}
+        <span className="text-black">Contact Us</span>
       </div>
 
       {/* Info Section */}
