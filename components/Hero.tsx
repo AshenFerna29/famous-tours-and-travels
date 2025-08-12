@@ -106,7 +106,7 @@ export default function Hero() {
       {/* Real image layer behind everything */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/home2.jpg"
+          src="/images/Home.jpg"
           alt="Sri Lanka landscape"
           fill
           priority
@@ -121,7 +121,7 @@ export default function Hero() {
 
       {/* Clouds */}
       <Image
-        src="/images/cloud1.png"
+        src="/images/Cloud.png"
         alt="Cloud"
         width={1200}
         height={800}
@@ -131,7 +131,7 @@ export default function Hero() {
         style={{ maxWidth: "50vw" }}
       />
       <Image
-        src="/images/cloud1.png"
+        src="/images/Cloud.png"
         alt="Cloud"
         width={800}
         height={533}

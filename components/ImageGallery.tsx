@@ -23,7 +23,7 @@ export default function ImageGallery() {
           }`}
         >
           <Image
-            src="/images/one.png"
+            src="/images/HomeImages/one.png"
             alt="Wildlife - Peacock"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -41,7 +41,7 @@ export default function ImageGallery() {
           }}
         >
           <Image
-            src="/images/two.png"
+            src="/images/HomeImages/two.png"
             alt="Lighthouse"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -59,7 +59,7 @@ export default function ImageGallery() {
           }}
         >
           <Image
-            src="/images/three.png"
+            src="/images/HomeImages/three.png"
             alt="Beach activities"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -77,7 +77,7 @@ export default function ImageGallery() {
           }}
         >
           <Image
-            src="/images/four.png"
+            src="/images/HomeImages/four.png"
             alt="Sigiriya Rock"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
