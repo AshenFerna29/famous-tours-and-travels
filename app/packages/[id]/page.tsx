@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CalendarDays, CarFront, Hotel, Flag } from "lucide-react";
 import { getAllPackageIds, getPackageById } from "@/lib/packages";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export async function generateStaticParams() {
   return getAllPackageIds().map((id) => ({ id }));
@@ -39,8 +40,10 @@ export default function PackageDetailPage({
         <h2 className="text-3xl font-bold text-[#fda720] mb-6">{data.title}</h2>
 
         <section className="mb-6 grid grid-cols-4 gap-3">
-          <div className="relative col-span-4 aspect-[16/12.12
-          5] overflow-hidden sm:col-span-2 sm:row-span-2">
+          <div
+            className="relative col-span-4 aspect-[16/12.12
+          5] overflow-hidden sm:col-span-2 sm:row-span-2"
+          >
             <Image
               src={gallery[0]}
               alt={data.title}
@@ -159,6 +162,8 @@ export default function PackageDetailPage({
           </section>
         )}
       </main>
+
+      <Footer />
     </>
   );
 }
