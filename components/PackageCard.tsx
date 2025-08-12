@@ -28,12 +28,12 @@ export default function PackageCard({ data }: Props) {
       <div className="space-y-4 p-4">
         {/* Days badge */}
         <div className="flex items-center gap-2 text-xs">
-          <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2 py-1 text-gray-600">
+          <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2 py-1 text-[#353978]">
             <CalendarDays size={14} />
             {data.days} {data.days === 1 ? "Day" : "Days"}
           </span>
 
-          <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 text-gray-600 ring-1 ring-gray-200">
+          <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 text-[#353978] ring-1 ring-gray-200">
             <Flag size={14} /> {data.type}
           </span>
         </div>
@@ -44,11 +44,11 @@ export default function PackageCard({ data }: Props) {
         {/* Explore */}
         <Link
           href={`/packages/${data.id}`}
-          className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-gray-800 transition group-hover:gap-3"
+          className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-[#353978] transition group-hover:gap-3"
           aria-label={`Explore ${data.title}`}
         >
           EXPLORE
-          <ArrowUpRight size={18} className="opacity-70" />
+          <ArrowUpRight size={18} className="text-[#353978] opacity-70" />
         </Link>
       </div>
     </div>

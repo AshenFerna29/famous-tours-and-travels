@@ -7,12 +7,6 @@ import packagesData from "@/data/packages.json"; // static import
 export default function PackagesSection() {
   const packages = packagesData as TourPackage[];
 
-  const handleExplore = (id: string) => {
-    // navigate, open modal, or route push – your choice.
-    // Example (client): router.push(`/packages/${id}`)
-    console.log("Explore:", id);
-  };
-
   return (
     <section className="mt-15 mx-auto max-w-7xl">
       <header className="max-w-2xl">
@@ -28,7 +22,7 @@ export default function PackagesSection() {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 p-15">
         {packages.map((pkg) => (
-          <PackageCard key={pkg.id} data={pkg} onExplore={handleExplore} />
+          <PackageCard key={pkg.id} data={pkg} />
         ))}
       </div>
     </section>
