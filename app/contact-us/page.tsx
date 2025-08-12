@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import heroImage from "@/public/images/contact-us.jpg";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export default function ContactUsPage() {
   const router = useRouter();
@@ -33,17 +34,12 @@ export default function ContactUsPage() {
         </div>
 
         {/* Breadcrumb */}
-        <div className="px-6 md:px-40 mt-10 text-sm text-gray-500">
-          <button
-            onClick={() => router.push("/home")}
-            className="hover:text-[#fda720] transition-colors duration-200 cursor-pointer"
-          >
-            Home
-          </button>
-          {" > "}
-          <span className="text-black">Contact Us</span>
-        </div>
-
+        <Breadcrumb
+            items={[
+              { label: "Home", href: "/home" },
+              { label: "Contact Us" },
+            ]}
+          />
         {/* Info Section */}
         <div className="px-6 md:px-40 py-12 space-y-12">
           <section>
