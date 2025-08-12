@@ -1,17 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, CalendarDays, Flag } from "lucide-react";
 import type { TourPackage } from "@/types/package";
 
 type Props = {
   data: TourPackage;
-  onExplore?: (id: string) => void; // optional click handler
 };
 
-export default function PackageCard({ data, onExplore }: Props) {
+export default function PackageCard({ data }: Props) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 transition hover:shadow-lg">
+    <div className="group relative overflow-hidden rounded-2xl bg-white ">
       {/* Image */}
       <div className="relative h-44 w-full">
         <Image
@@ -42,14 +42,14 @@ export default function PackageCard({ data, onExplore }: Props) {
         <p className="line-clamp-3 text-sm text-gray-600">{data.description}</p>
 
         {/* Explore */}
-        <button
-          onClick={() => onExplore?.(data.id)}
+        <Link
+          href={`/packages/${data.id}`}
           className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-gray-800 transition group-hover:gap-3"
           aria-label={`Explore ${data.title}`}
         >
           EXPLORE
           <ArrowUpRight size={18} className="opacity-70" />
-        </button>
+        </Link>
       </div>
     </div>
   );

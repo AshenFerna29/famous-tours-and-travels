@@ -5,7 +5,35 @@
     "days": 5,
     "type": "Adventure Tour",
     "description": "Scenic tour through Kandy, Knuckles, and Nuwara Eliya. Misty lakes, tea trails, and cultural highlights in the Highlands.",
-    "image": "/images/packages/hill-country.jpg"
+    "image": "/images/packages/hill-country.jpg",
+    "overview": "Embark on a sweeping 5-day journey through Sri Lanka’s cool highlands, where misty mountains, lush tea estates, and tranquil lakes create a dreamlike escape from the tropics. From historic Kandy to green valleys in Nuwara Eliya, discover UNESCO heritage, scenic rail rides, and authentic hill-country living.",
+    "badges": {
+      "type": "Adventure Tour",
+      "duration": "5 Days",
+      "vehicle": "Car / Van / Bus",
+      "hotelCategory": "3-star / Eco-Lodge"
+    },
+    "gallery": [
+      "/images/packages/hill-country/1.jpg",
+      "/images/packages/hill-country/2.jpg",
+      "/images/packages/hill-country/3.jpg",
+      "/images/packages/hill-country/4.jpg",
+      "/images/packages/hill-country/5.jpg"
+    ],
+    "highlights": [
+      "Kandy: visit the Temple of the Tooth and city promenade views from Bahirawakanda.",
+      "Knuckles Mountain Range hike – guided hike through cloud-kissed trails and luscious tea regions.",
+      "Nuwara Eliya: colonial lanes, tea factories, waterfalls, and Gregory Lake boat ride.",
+      "Horton Plains walk: World’s End viewpoint and Baker’s Falls.",
+      "Scenic hill-country train ride between Kandy and Nanu Oya."
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Airport Pick Up", "details": "Arrive in Colombo. Drive to Kandy. Visit the Temple of the Tooth and Bahirawakanda. Overnight in Kandy." },
+      { "day": 2, "title": "Knuckles Range Hike", "details": "Full-day guided trek with panoramic viewpoints. Picnic lunch included. Overnight in Kandy or Matale eco-lodge." },
+      { "day": 3, "title": "Kandy → Nuwara Eliya", "details": "Scenic train via tea country, visit a tea factory & estate, Gregory Lake stroll. Overnight in Nuwara Eliya." },
+      { "day": 4, "title": "Horton Plains", "details": "Early hike to World’s End & Baker’s Falls, relax in town. Overnight in Nuwara Eliya." },
+      { "day": 5, "title": "Departure", "details": "Drive to Colombo / airport drop-off." }
+    ]
   },
   {
     "id": "ceylon-romance",
@@ -13,7 +41,39 @@
     "days": 7,
     "type": "Honeymoon Tour",
     "description": "Honeymoon escape through Sri Lanka’s most romantic spots—beaches, tea hills, safaris, and candlelit moments together.",
-    "image": "/images/packages/romance.jpg"
+    "image": "/images/packages/romance.jpg",
+    "overview": "A 7-day honeymoon escape crafted for romance. From golden sunsets in Negombo to misty tea hills of Nuwara Eliya, experience intimate train rides, candlelit dinners, safaris under the stars, and serene beach days. Perfect for couples seeking unforgettable moments together in Sri Lanka.",
+    "badges": {
+      "type": "Honeymoon Tour",
+      "duration": "7 Days",
+      "vehicle": "Car",
+      "hotelCategory": "4-star Romantic Hotels"
+    },
+    "gallery": [
+      "/images/packages/romance/1.jpg",
+      "/images/packages/romance/2.jpg",
+      "/images/packages/romance/3.jpg",
+      "/images/packages/romance/4.jpg",
+      "/images/packages/romance/5.jpg"
+    ],
+    "highlights": [
+      "Negombo beachfront walks and candlelit dining.",
+      "Botanical Garden strolls and spa therapy in Kandy.",
+      "Tea country escape in Nuwara Eliya.",
+      "Ella scenic train ride and bonfire dinner.",
+      "Yala safari adventure with luxury camping.",
+      "Relaxing beach day and whale watching in Mirissa.",
+      "Historic exploration of Galle Fort."
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Negombo Arrival", "details": "Arrive and unwind with a sunset beach walk and candlelit dinner. Overnight in Negombo." },
+      { "day": 2, "title": "Kandy", "details": "Visit Botanical Gardens, enjoy a couples’ spa session. Overnight in Kandy." },
+      { "day": 3, "title": "Nuwara Eliya", "details": "Tour a tea plantation and factory, stroll through Victoria Park. Overnight in Nuwara Eliya." },
+      { "day": 4, "title": "Ella", "details": "Scenic train ride, visit Nine Arches Bridge, bonfire dinner. Overnight in Ella." },
+      { "day": 5, "title": "Yala", "details": "Afternoon safari and starlit dinner. Overnight in luxury tented camp." },
+      { "day": 6, "title": "Mirissa", "details": "Beach day with optional whale watching. Overnight in Mirissa." },
+      { "day": 7, "title": "Galle & Departure", "details": "Explore Galle Fort; private transfer to airport." }
+    ]
   },
   {
     "id": "ancient-ceylon",
@@ -21,23 +81,108 @@
     "days": 6,
     "type": "Cultural Tour",
     "description": "Cultural journey through Sri Lanka’s ancient kingdoms. Discover sacred cities, iconic temples, and timeless heritage.",
-    "image": "/images/packages/ancient.jpg"
+    "image": "/images/packages/ancient.jpg",
+    "overview": "Step back in time on this 6-day cultural odyssey through Sri Lanka’s most treasured UNESCO heritage sites. Wander ancient capitals, climb rock fortresses, explore cave temples, and experience the island’s living traditions in its historic heartlands.",
+    "badges": {
+      "type": "Cultural Tour",
+      "duration": "6 Days",
+      "vehicle": "Car / Van / Bus",
+      "hotelCategory": "3-star Cultural Hotels"
+    },
+    "gallery": [
+      "/images/packages/ancient/1.jpg",
+      "/images/packages/ancient/2.jpg",
+      "/images/packages/ancient/3.jpg",
+      "/images/packages/ancient/4.jpg",
+      "/images/packages/ancient/5.jpg"
+    ],
+    "highlights": [
+      "Sacred city of Anuradhapura and its monumental stupas.",
+      "Royal ruins and museum of Polonnaruwa.",
+      "Sigiriya Rock Fortress and Dambulla Cave Temple.",
+      "Temple of the Tooth Relic and cultural show in Kandy.",
+      "Tea heritage and colonial charm of Nuwara Eliya."
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Anuradhapura", "details": "Arrive and visit the sacred city and ancient stupas. Overnight in Anuradhapura." },
+      { "day": 2, "title": "Polonnaruwa", "details": "Explore royal ruins and the archaeological museum. Overnight in Polonnaruwa." },
+      { "day": 3, "title": "Sigiriya & Dambulla", "details": "Climb Sigiriya; tour Dambulla cave temples. Overnight in Habarana." },
+      { "day": 4, "title": "Kandy", "details": "Visit the Temple of the Tooth; evening cultural dance. Overnight in Kandy." },
+      { "day": 5, "title": "Nuwara Eliya", "details": "Tea museum visit and colonial town walk. Overnight in Nuwara Eliya." },
+      { "day": 6, "title": "Departure", "details": "Drive to Colombo; airport drop-off." }
+    ]
   },
   {
     "id": "tranquil-escape",
     "title": "Tranquil Escape",
-    "days": 6,
+    "days": 5,
     "type": "Wellness Tour",
     "description": "Wellness retreat along Sri Lanka’s coast. Rejuvenate with Ayurveda, yoga, and serene beachfront bliss.",
-    "image": "/images/packages/tranquil.jpg"
+    "image": "/images/packages/tranquil.jpg",
+    "overview": "Unwind on a 5-day wellness journey designed for relaxation and renewal. Enjoy Ayurveda therapies, yoga by the sea, herbal treatments, and wholesome cuisine while soaking in Sri Lanka’s coastal charm and serene landscapes.",
+    "badges": {
+      "type": "Wellness Tour",
+      "duration": "5 Days",
+      "vehicle": "Car / Van",
+      "hotelCategory": "Wellness Resorts / Ayurveda Centers"
+    },
+    "gallery": [
+      "/images/packages/tranquil/1.jpg",
+      "/images/packages/tranquil/2.jpg",
+      "/images/packages/tranquil/3.jpg",
+      "/images/packages/tranquil/4.jpg",
+      "/images/packages/tranquil/5.jpg"
+    ],
+    "highlights": [
+      "Sunset meditation on arrival in Negombo.",
+      "Signature Ayurveda spa sessions in Bentota.",
+      "Herbal spa and cultural walk in Galle Fort.",
+      "Yoga and healthy cooking class in Hikkaduwa.",
+      "Mindfulness practices and nutritious menus."
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Negombo", "details": "Arrive, relax, enjoy sunset meditation. Overnight in a wellness resort." },
+      { "day": 2, "title": "Bentota", "details": "Ayurveda treatments and guided yoga sessions. Overnight in Bentota." },
+      { "day": 3, "title": "Galle", "details": "Herbal spa, explore Galle Fort. Overnight in an eco-resort." },
+      { "day": 4, "title": "Hikkaduwa", "details": "Beach walk, yoga, healthy cooking workshop. Overnight in Hikkaduwa." },
+      { "day": 5, "title": "Departure", "details": "Light breakfast and airport transfer." }
+    ]
   },
   {
     "id": "wild-lanka",
     "title": "Wild Lanka",
-    "days": 6,
+    "days": 5,
     "type": "Wildlife Tour",
     "description": "Wildlife adventure across top national parks. Spot elephants, leopards, and exotic birds in their natural habitats.",
-    "image": "/images/packages/wild-lanka.jpg"
+    "image": "/images/packages/wild-lanka.jpg",
+    "overview": "Set out on a 5-day safari circuit through Sri Lanka’s premier national parks. From elusive leopards to great elephant herds and colorful birdlife, this journey brings you close to the island’s wild heart and pristine ecosystems.",
+    "badges": {
+      "type": "Wildlife Tour",
+      "duration": "5 Days",
+      "vehicle": "Van / Bus",
+      "hotelCategory": "Safari Lodges"
+    },
+    "gallery": [
+      "/images/packages/wild/1.jpg",
+      "/images/packages/wild/2.jpg",
+      "/images/packages/wild/3.jpg",
+      "/images/packages/wild/4.jpg",
+      "/images/packages/wild/5.jpg"
+    ],
+    "highlights": [
+      "Evening drive in Wilpattu National Park.",
+      "Minneriya/Kaudulla elephant gathering.",
+      "Wasgamuwa jungle safari and birdwatching.",
+      "Yala leopard-focused game drive.",
+      "Experienced naturalist guides and eco-lodges."
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Wilpattu", "details": "Arrival and evening safari in Wilpattu. Overnight in a lodge." },
+      { "day": 2, "title": "Minneriya / Kaudulla", "details": "Elephant gathering safari; transfer to Habarana. Overnight in Habarana." },
+      { "day": 3, "title": "Wasgamuwa", "details": "Birding and jungle safari in Wasgamuwa. Overnight near the park." },
+      { "day": 4, "title": "Yala", "details": "Morning transfer; afternoon leopard safari. Overnight in a Yala camp." },
+      { "day": 5, "title": "Departure", "details": "Return journey and airport transfer." }
+    ]
   },
   {
     "id": "ceylon-on-a-budget",
@@ -45,30 +190,144 @@
     "days": 5,
     "type": "Budget Tour",
     "description": "Adventure exploring Sri Lanka affordably: signature culture, nature, and scenic travel without overspending.",
-    "image": "/images/packages/budget.jpg"
+    "image": "/images/packages/budget.jpg",
+    "overview": "Discover Sri Lanka’s highlights on a wallet-friendly 5-day adventure. Mix public transport experiences with must-see sights, budget stays, and authentic eats while keeping comfort and safety in mind.",
+    "badges": {
+      "type": "Budget Tour",
+      "duration": "5 Days",
+      "vehicle": "Bus / Van",
+      "hotelCategory": "Budget Hotels / Guesthouses"
+    },
+    "gallery": [
+      "/images/packages/budget/1.jpg",
+      "/images/packages/budget/2.jpg",
+      "/images/packages/budget/3.jpg",
+      "/images/packages/budget/4.jpg",
+      "/images/packages/budget/5.jpg"
+    ],
+    "highlights": [
+      "Colombo markets and Galle Face promenade.",
+      "Cultural stops and local markets in Kandy.",
+      "Sigiriya and Dambulla with budget entries.",
+      "Tea country views and scenic bus ride.",
+      "Optional train rides and shared transfers."
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Colombo", "details": "Arrival; explore Pettah markets and Galle Face. Overnight in a budget hotel." },
+      { "day": 2, "title": "Kandy", "details": "Cultural sites and market visit; local bites. Overnight in a Kandy guesthouse." },
+      { "day": 3, "title": "Sigiriya & Dambulla", "details": "Budget entries and public transport option. Overnight in Dambulla." },
+      { "day": 4, "title": "Nuwara Eliya", "details": "Tea plantations and scenic public bus ride. Overnight in Nuwara Eliya." },
+      { "day": 5, "title": "Departure", "details": "Return via train or shared vehicle to Colombo/airport." }
+    ]
   },
   {
     "id": "luxury-island-retreat",
     "title": "Luxury Island Retreat",
-    "days": 5,
+    "days": 6,
     "type": "Luxury Tour",
-    "description": "Indulgent escape through Sri Lanka in style. Enjoy VIP service, 5‑star stays, and unforgettable experiences.",
-    "image": "/images/packages/luxury.jpg"
+    "description": "Indulgent escape through Sri Lanka in style. Enjoy VIP service, 5-star stays, and unforgettable experiences.",
+    "image": "/images/packages/luxury.jpg",
+    "overview": "Savor Sri Lanka over 6 indulgent days with private transfers, curated experiences, and 5-star stays. From fortress hotels and boutique spas to first-class rail and optional helicopter flights, this journey is luxury without compromise.",
+    "badges": {
+      "type": "Luxury Tour",
+      "duration": "6 Days",
+      "vehicle": "Private Car / Luxury Van",
+      "hotelCategory": "5-star Hotels & Resorts"
+    },
+    "gallery": [
+      "/images/packages/luxury/1.jpg",
+      "/images/packages/luxury/2.jpg",
+      "/images/packages/luxury/3.jpg",
+      "/images/packages/luxury/4.jpg",
+      "/images/packages/luxury/5.jpg"
+    ],
+    "highlights": [
+      "VIP airport pickup and premium city hotel.",
+      "Sigiriya with optional helicopter scenic flight.",
+      "Private cultural tour and spa in Kandy.",
+      "First-class cabin on the hill-country train.",
+      "Luxury stays in Ella and Galle Fort."
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Colombo", "details": "VIP arrival service; check in to a 5-star hotel and unwind." },
+      { "day": 2, "title": "Sigiriya", "details": "Transfer to Sigiriya; optional helicopter flight; luxury lodge stay." },
+      { "day": 3, "title": "Kandy", "details": "Private guided tour and spa; boutique hotel stay." },
+      { "day": 4, "title": "Ella", "details": "First-class train ride; check in to a luxury mountain hotel." },
+      { "day": 5, "title": "Galle", "details": "Transfer to Galle; stay in a heritage luxury property inside the Fort." },
+      { "day": 6, "title": "Departure", "details": "Private transfer to the airport." }
+    ]
   },
   {
     "id": "eco-ceylon",
     "title": "Eco Ceylon",
     "days": 5,
-    "type": "Eco‑Tourism Tour",
-    "description": "Eco‑tour through rainforests, rivers, and wildlife parks. Stay green with nature walks, safaris, and eco‑lodge stays.",
-    "image": "/images/packages/eco.jpg"
+    "type": "Eco-Tourism Tour",
+    "description": "Eco-tour through rainforests, rivers, and wildlife parks. Stay green with nature walks, safaris, and eco-lodge stays.",
+    "image": "/images/packages/eco.jpg",
+    "overview": "Immerse yourself in nature on a 5-day eco-journey across rainforests, rivers, and savannahs. Walk with naturalists, support conservation sites, and rest in eco-lodges that blend comfort with low-impact living.",
+    "badges": {
+      "type": "Eco-Tourism Tour",
+      "duration": "5 Days",
+      "vehicle": "Van / Car",
+      "hotelCategory": "Eco-Lodges"
+    },
+    "gallery": [
+      "/images/packages/eco/1.jpg",
+      "/images/packages/eco/2.jpg",
+      "/images/packages/eco/3.jpg",
+      "/images/packages/eco/4.jpg",
+      "/images/packages/eco/5.jpg"
+    ],
+    "highlights": [
+      "Guided rainforest walk in Sinharaja.",
+      "Belihuloya river trekking and organic meals.",
+      "Ella eco-trails and village experiences.",
+      "Udawalawe Elephant Transit Home and safari.",
+      "Sustainable stays and responsible travel practices."
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Sinharaja", "details": "Arrive; guided rainforest walk. Overnight in an eco-lodge." },
+      { "day": 2, "title": "Belihuloya", "details": "River trekking; savor organic cuisine. Overnight in an eco-resort." },
+      { "day": 3, "title": "Ella", "details": "Eco-trails and village walk. Overnight in an eco guesthouse." },
+      { "day": 4, "title": "Udawalawe", "details": "Visit the Elephant Transit Home; afternoon safari. Overnight in eco-camp." },
+      { "day": 5, "title": "Departure", "details": "Return journey to Colombo/airport." }
+    ]
   },
   {
     "id": "family-fun-sri-lanka",
     "title": "Family Fun in Sri Lanka",
-    "days": 5,
+    "days": 6,
     "type": "Family Tour",
-    "description": "Adventure packed with kid‑friendly sights and safaris. Perfect for families to explore nature, wildlife, and culture together.",
-    "image": "/images/packages/family.jpg"
+    "description": "Adventure packed with kid-friendly sights and safaris. Perfect for families to explore nature, wildlife, and culture together.",
+    "image": "/images/packages/family.jpg",
+    "overview": "Share 6 days of easygoing exploration tailored for families. From city parks and strawberry farms to scenic trains and gentle safaris, this trip balances fun, learning, and downtime for all ages.",
+    "badges": {
+      "type": "Family Tour",
+      "duration": "6 Days",
+      "vehicle": "Van / Bus",
+      "hotelCategory": "Family-friendly Hotels"
+    },
+    "gallery": [
+      "/images/packages/family/1.jpg",
+      "/images/packages/family/2.jpg",
+      "/images/packages/family/3.jpg",
+      "/images/packages/family/4.jpg",
+      "/images/packages/family/5.jpg"
+    ],
+    "highlights": [
+      "Colombo zoo visit and Galle Face kites.",
+      "Pinnawala Elephant Orphanage and Kandy tour.",
+      "Nuwara Eliya strawberry farm and boating.",
+      "Ella mini hikes and waterfalls.",
+      "Family-friendly safari in Yala or Udawalawe."
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Colombo", "details": "City zoo and Galle Face fun. Overnight in Colombo." },
+      { "day": 2, "title": "Pinnawala & Kandy", "details": "Elephant orphanage; Kandy city highlights. Overnight in Kandy." },
+      { "day": 3, "title": "Nuwara Eliya", "details": "Strawberry farm visit; boating on Lake Gregory. Overnight in Nuwara Eliya." },
+      { "day": 4, "title": "Ella", "details": "Short hike and Ravana Falls stop. Overnight in Ella." },
+      { "day": 5, "title": "Yala or Udawalawe", "details": "Gentle family safari; stay at a wildlife lodge." },
+      { "day": 6, "title": "Departure", "details": "Return transfer to Colombo/airport." }
+    ]
   }
 ]
