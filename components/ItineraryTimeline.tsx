@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
 
 type ItineraryItem = {
@@ -24,6 +24,37 @@ export default function ItineraryTimeline({
   items,
   colorHex = "#fda720",
 }: Props) {
+  const [visibleDays, setVisibleDays] = useState<Set<number>>(new Set([1]));
+  const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (!items?.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const dayIndex = parseInt(entry.target.getAttribute('data-day-index') || '0');
+            const day = items[dayIndex]?.day;
+            if (day) {
+              setVisibleDays(prev => new Set([...prev, day]));
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the dot is visible
+        rootMargin: '-20% 0px -20% 0px' // Add some margin for better timing
+      }
+    );
+
+    dotRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, [items]);
+  
   if (!items?.length) return null;
 
   return (
@@ -39,18 +70,23 @@ export default function ItineraryTimeline({
         {items.map((item, idx) => {
           const isFirst = idx === 0;
           const isLast = idx === items.length - 1;
+          const isVisible = visibleDays.has(item.day);
 
           const dotStyle: "filled" | "hollow" =
             item.dot ?? (isFirst || isLast ? "filled" : "hollow");
 
           return (
             <li key={`${item.day}-${item.title}`} className="relative pl-12">
-              {/* Dot */}
-              <span
-                aria-hidden
+              {/* Dot with scroll detection */}
+              <div
+                ref={(el) => {
+                  dotRefs.current[idx] = el;
+                }}
+                data-day-index={idx}
                 className={clsx(
-                  "absolute left-0 top-[2px] inline-flex h-6 w-6 items-center justify-center rounded-full border-2",
-                  dotStyle === "filled" ? "border-transparent" : "bg-white"
+                  "absolute left-0 top-[2px] inline-flex h-6 w-6 items-center justify-center rounded-full border-2 transition-all duration-500",
+                  dotStyle === "filled" ? "border-transparent" : "bg-white",
+                  isVisible ? "scale-100 opacity-100" : "scale-75 opacity-40"
                 )}
                 style={{
                   backgroundColor: dotStyle === "filled" ? colorHex : "white",
@@ -60,14 +96,21 @@ export default function ItineraryTimeline({
                 {/* Inner small dot for hollow style */}
                 {dotStyle === "hollow" ? (
                   <span
-                    className="block h-2 w-2 rounded-full"
+                    className="block h-2 w-2 rounded-full transition-all duration-500"
                     style={{ backgroundColor: colorHex }}
                   />
                 ) : null}
-              </span>
+              </div>
 
-              {/* Text */}
-              <div className="space-y-2">
+              {/* Text with animation */}
+              <div 
+                className={clsx(
+                  "space-y-2 transition-all duration-700 ease-out overflow-hidden",
+                  isVisible 
+                    ? "opacity-100 max-h-96 transform translate-y-0" 
+                    : "opacity-0 max-h-0 transform translate-y-4"
+                )}
+              >
                 <h3 className="text-[15px] sm:text-base font-semibold text-gray-900">
                   <span className="mr-2">Day {item.day}:</span>
                   <span>{item.title}</span>
