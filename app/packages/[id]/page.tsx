@@ -5,17 +5,19 @@ import { CalendarDays, CarFront, Hotel, Flag } from "lucide-react";
 import { getAllPackageIds, getPackageById } from "@/lib/packages";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ItineraryTimeline from "@/components/ItineraryTimeline";
 
 export async function generateStaticParams() {
   return getAllPackageIds().map((id) => ({ id }));
 }
 
-export default function PackageDetailPage({
+export default async function PackageDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const data = getPackageById(params.id);
+  const { id } = await params;
+  const data = getPackageById(id);
   if (!data) return notFound();
 
   const b = data.badges || {};
@@ -145,20 +147,9 @@ export default function PackageDetailPage({
             <h2 className="text-3xl font-bold text-[#fda720] mb-6">
               Itinerary
             </h2>
-            <ol className="not-prose space-y-4">
-              {data.itinerary.map((item) => (
-                <li
-                  key={item.day}
-                  className="rounded-xl border border-gray-200 p-4"
-                >
-                  <div className="mb-1 text-sm font-semibold text-orange-600">
-                    Day {item.day}
-                  </div>
-                  <div className="text-base font-semibold">{item.title}</div>
-                  <p className="mt-1 text-gray-600">{item.details}</p>
-                </li>
-              ))}
-            </ol>
+            <div className="not-prose">
+              <ItineraryTimeline items={data.itinerary} colorHex="#fda720" />
+            </div>
           </section>
         )}
       </main>
