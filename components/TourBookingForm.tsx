@@ -176,7 +176,7 @@ const TourBookingForm: React.FC = () => {
       {/* Top Image */}
       <div className="h-60 w-full relative">
         <Image
-          src="/images/Booking-page.jpg"
+          src="/images/Booking-form.jpg"
           alt="Tour Beach View"
           fill
           className="object-cover"

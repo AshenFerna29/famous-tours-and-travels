@@ -5,8 +5,7 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Form from "@/components/TourBookingForm";
-import heroImage from "@/public/images/booking-hero.jpg";
-import Breadcrumb from "@/components/Breadcrumb";
+import heroImage from "@/public/images/Booking-hero.jpg";
 
 export default function AboutUsPage() {
   const router = useRouter();
