@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Form from "@/components/TourBookingForm";
-import heroImage from "@/public/images/booking-hero.jpg";
+import heroImage from "@/public/images/Booking-hero.jpg";
 import Breadcrumb from "@/components/Breadcrumb";
 
 export default function AboutUsPage() {
@@ -33,12 +33,8 @@ export default function AboutUsPage() {
 
       {/* Breadcrumb */}
       <Breadcrumb
-                        items={[
-                          { label: "Home", href: "/home" },
-                          { label: "Bookings" },
-                        ]}
-                      />
-      
+        items={[{ label: "Home", href: "/home" }, { label: "Bookings" }]}
+      />
 
       {/* Content Section */}
       <div className="px-6 md:px-40 py-12 space-y-12">

@@ -27,22 +27,18 @@ export default async function PackageDetailPage({
   return (
     <>
       <Navbar />
-      <main className="mx-auto max-w-5xl px-6 py-10 pt-32">
-       
-       {/* Breadcrumb */}
-             <Breadcrumb
-                                     items={[
-                                       { label: "Home", href: "/home" },
-                                       
-                                     ]}
-                                   />
+
+      <div className="pt-25">
+        <Breadcrumb
+          items={[{ label: "Home", href: "/home" }, { label: "Bookings" }]}
+        />
+      </div>
+
+      <main className="px-6 md:px-40 py-6 space-y-12">
         <h2 className="text-3xl font-bold text-[#fda720] mb-6">{data.title}</h2>
 
-        <section className="mb-6 grid grid-cols-4 gap-3">
-          <div
-            className="relative col-span-4 aspect-[16/12.12
-          5] overflow-hidden sm:col-span-2 sm:row-span-2"
-          >
+        <section className="mb-6 grid grid-cols-4 gap-4">
+          <div className="relative col-span-4 aspect-[16/11] overflow-hidden sm:col-span-2 sm:row-span-2">
             <Image
               src={gallery[0]}
               alt={data.title}
@@ -51,7 +47,7 @@ export default async function PackageDetailPage({
             />
           </div>
           {gallery.slice(1, 5).map((src, i) => (
-            <div key={i} className="relative aspect-[4/3] overflow-hidden">
+            <div key={i} className="relative aspect-[6/4.1] overflow-hidden">
               <Image
                 src={src}
                 alt={`${data.title} ${i + 2}`}

@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Footer from "@/components/Footer";
-import heroImage from "@/public/images/about-hero.jpg";
+import heroImage from "@/public/images/About-hero.jpg";
 import MissionVision from "@/components/MissionVision";
 import AboutCollageSection from "@/components/AboutCollageSection";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -65,11 +65,8 @@ export default function AboutUsPage() {
 
       {/* Breadcrumb */}
       <Breadcrumb
-                              items={[
-                                { label: "Home", href: "/home" },
-                                { label: "About Us" },
-                              ]}
-                            />
+        items={[{ label: "Home", href: "/home" }, { label: "About Us" }]}
+      />
 
       {/* About Us Section */}
       <div className="reveal-text">
