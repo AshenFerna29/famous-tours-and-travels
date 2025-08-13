@@ -6,6 +6,7 @@ import { getAllPackageIds, getPackageById } from "@/lib/packages";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ItineraryTimeline from "@/components/ItineraryTimeline";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export async function generateStaticParams() {
   return getAllPackageIds().map((id) => ({ id }));
@@ -27,18 +28,14 @@ export default async function PackageDetailPage({
     <>
       <Navbar />
       <main className="mx-auto max-w-5xl px-6 py-10 pt-32">
-        <nav className="mb-6 text-sm text-gray-500">
-          <Link href="/" className="hover:underline">
-            Home
-          </Link>{" "}
-          <span className="mx-1">/</span>
-          <Link href="/#packages" className="hover:underline">
-            Packages
-          </Link>{" "}
-          <span className="mx-1">/</span>
-          <span className="text-gray-700">{data.title}</span>
-        </nav>
-
+       
+       {/* Breadcrumb */}
+             <Breadcrumb
+                                     items={[
+                                       { label: "Home", href: "/home" },
+                                       
+                                     ]}
+                                   />
         <h2 className="text-3xl font-bold text-[#fda720] mb-6">{data.title}</h2>
 
         <section className="mb-6 grid grid-cols-4 gap-3">

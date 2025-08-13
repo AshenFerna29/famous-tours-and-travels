@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import heroImage from "@/public/images/faq.jpg";
+import heroImage from "@/public/images/FAQ-hero.jpg";
 import Breadcrumb from "@/components/Breadcrumb";
 
 const faqData = [

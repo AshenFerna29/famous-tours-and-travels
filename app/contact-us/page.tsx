@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import heroImage from "@/public/images/contact-us.jpg";
+import heroImage from "@/public/images/ContactUs-hero.jpg";
 import Breadcrumb from "@/components/Breadcrumb";
 
 export default function ContactUsPage() {
