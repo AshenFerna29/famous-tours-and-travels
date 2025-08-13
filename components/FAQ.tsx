@@ -3,7 +3,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import heroImage from "@/public/images/FAQ-hero.jpg";
+import heroImage from "@/public/images/faq.jpg";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const faqData = [
   {
@@ -66,16 +67,13 @@ export default function FAQ() {
       </div>
 
       {/* Breadcrumb */}
-      <div className="px-6 md:px-40 mt-10 text-sm text-gray-500 z-30 relative">
-        <button
-          onClick={() => router.push("/home")}
-          className="hover:text-[#fda720] transition-colors duration-200 cursor-pointer"
-        >
-          Home
-        </button>
-        {" > "}
-        <span className="text-black">FAQ</span>
-      </div>
+      <Breadcrumb
+                  items={[
+                    { label: "Home", href: "/home" },
+                    { label: "FAQ" },
+                  ]}
+                />
+      
       <div className="px-6 md:px-40 py-12 space-y-12">
         <section>
           <h2 className="text-3xl font-bold text-[#fda720] ">
