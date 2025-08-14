@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import heroImage from "@/public/images/about-hero.jpg";
 import MissionVision from "@/components/MissionVision";
 import AboutCollageSection from "@/components/AboutCollageSection";
+import Breadcrumb from "@/components/Breadcrumb";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,16 +64,9 @@ export default function AboutUsPage() {
       </div>
 
       {/* Breadcrumb */}
-      <div className="px-6 md:px-40 mt-10 text-sm text-gray-500">
-        <button
-          onClick={() => router.push("/home")}
-          className="hover:text-[#fda720] transition-colors duration-200 cursor-pointer"
-        >
-          Home
-        </button>
-        {" > "}
-        <span className="text-black">About Us</span>
-      </div>
+      <Breadcrumb
+        items={[{ label: "Home", href: "/home" }, { label: "About Us" }]}
+      />
 
       {/* About Us Section */}
       <div className="reveal-text">

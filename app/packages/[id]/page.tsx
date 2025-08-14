@@ -5,17 +5,20 @@ import { CalendarDays, CarFront, Hotel, Flag } from "lucide-react";
 import { getAllPackageIds, getPackageById } from "@/lib/packages";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ItineraryTimeline from "@/components/ItineraryTimeline";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export async function generateStaticParams() {
   return getAllPackageIds().map((id) => ({ id }));
 }
 
-export default function PackageDetailPage({
+export default async function PackageDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const data = getPackageById(params.id);
+  const { id } = await params;
+  const data = getPackageById(id);
   if (!data) return notFound();
 
   const b = data.badges || {};
@@ -24,26 +27,18 @@ export default function PackageDetailPage({
   return (
     <>
       <Navbar />
-      <main className="mx-auto max-w-5xl px-6 py-10 pt-32">
-        <nav className="mb-6 text-sm text-gray-500">
-          <Link href="/" className="hover:underline">
-            Home
-          </Link>{" "}
-          <span className="mx-1">/</span>
-          <Link href="/#packages" className="hover:underline">
-            Packages
-          </Link>{" "}
-          <span className="mx-1">/</span>
-          <span className="text-gray-700">{data.title}</span>
-        </nav>
 
+      <div className="pt-25">
+        <Breadcrumb
+          items={[{ label: "Home", href: "/home" }, { label: data.title }]}
+        />
+      </div>
+
+      <main className="px-6 md:px-40 py-6 space-y-12">
         <h2 className="text-3xl font-bold text-[#fda720] mb-6">{data.title}</h2>
 
-        <section className="mb-6 grid grid-cols-4 gap-3">
-          <div
-            className="relative col-span-4 aspect-[16/12.12
-          5] overflow-hidden sm:col-span-2 sm:row-span-2"
-          >
+        <section className="mb-6 grid grid-cols-4 gap-4">
+          <div className="relative col-span-4 aspect-[16/11] overflow-hidden sm:col-span-2 sm:row-span-2">
             <Image
               src={gallery[0]}
               alt={data.title}
@@ -52,7 +47,7 @@ export default function PackageDetailPage({
             />
           </div>
           {gallery.slice(1, 5).map((src, i) => (
-            <div key={i} className="relative aspect-[4/3] overflow-hidden">
+            <div key={i} className="relative aspect-[6/4.1] overflow-hidden">
               <Image
                 src={src}
                 alt={`${data.title} ${i + 2}`}
@@ -145,20 +140,9 @@ export default function PackageDetailPage({
             <h2 className="text-3xl font-bold text-[#fda720] mb-6">
               Itinerary
             </h2>
-            <ol className="not-prose space-y-4">
-              {data.itinerary.map((item) => (
-                <li
-                  key={item.day}
-                  className="rounded-xl border border-gray-200 p-4"
-                >
-                  <div className="mb-1 text-sm font-semibold text-orange-600">
-                    Day {item.day}
-                  </div>
-                  <div className="text-base font-semibold">{item.title}</div>
-                  <p className="mt-1 text-gray-600">{item.details}</p>
-                </li>
-              ))}
-            </ol>
+            <div className="not-prose">
+              <ItineraryTimeline items={data.itinerary} colorHex="#fda720" />
+            </div>
           </section>
         )}
       </main>
