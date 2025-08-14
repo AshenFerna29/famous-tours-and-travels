@@ -3,6 +3,7 @@
 import Image from "next/image";
 import BookNowButton from "./Button";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,8 +12,13 @@ gsap.registerPlugin(ScrollTrigger);
 export default function WelcomeSection() {
   const [isLoaded, setIsLoaded] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => setIsLoaded(true), []);
+
+  const handleAboutUsClick = () => {
+    router.push("/about-us");
+  };
 
   useEffect(() => {
     if (!rootRef.current) return;
@@ -121,6 +127,7 @@ export default function WelcomeSection() {
         <div className="welcome-cta">
           <BookNowButton
             text="ABOUT US"
+            onClick={handleAboutUsClick}
             isVisible={isLoaded}
             delay="700ms"
             size="md"

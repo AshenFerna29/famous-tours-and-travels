@@ -30,7 +30,7 @@ export default async function PackageDetailPage({
 
       <div className="pt-25">
         <Breadcrumb
-          items={[{ label: "Home", href: "/home" }, { label: "Bookings" }]}
+          items={[{ label: "Home", href: "/home" }, { label: data.title }]}
         />
       </div>
 
