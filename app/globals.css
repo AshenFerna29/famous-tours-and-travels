@@ -149,4 +149,13 @@
     max-width: 100%;
     height: auto;
   }
+  /* Hide scrollbars on the ScrollStack scroller only */
+.no-scrollbar {
+  -ms-overflow-style: none;      /* IE/Edge */
+  scrollbar-width: none;         /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;                 /* Chrome/Safari */
+}
+
 }
