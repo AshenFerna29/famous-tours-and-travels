@@ -104,7 +104,7 @@ export default function ThingsToDo() {
   );
 
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="pt-16 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Heading + paragraph (SAME styling as your Gallery section) */}
         <div>
@@ -121,13 +121,13 @@ export default function ThingsToDo() {
         {/* GRID — only map (left) and card (right) */}
         <div className="mx-auto grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_1fr] items-start -mt-5">
           {/* Left: Map */}
-          <div className="relative w-full ml-15">
-            <div className="relative w-full max-w-[500px]">
+          <div className="relative w-full">
+            <div className="relative w-full max-w-[600px]">
               <Image
                 src="/images/map-srilanka.png"
                 alt="Sri Lanka map"
                 width={600}
-                height={900} // match your map’s actual aspect ratio
+                height={800} // match your map’s actual aspect ratio
                 className="object-contain select-none pointer-events-none w-full h-auto"
                 priority
               />
@@ -163,7 +163,7 @@ export default function ThingsToDo() {
           {/* Right: Swappable card */}
           <aside className="flex items-start justify-center">
             <div className="w-full max-w-md rounded-3xl bg-white shadow-xl ring-1 ring-black/5 overflow-hidden mt-35">
-              <div className="relative h-64 w-full">
+              <div className="relative h-70 w-full">
                 <Image
                   key={active.slug}
                   src={`/images/locations/${active.slug}.jpg`}
