@@ -14,9 +14,12 @@ export default function VelocityMarqueeSection() {
       <ScrollVelocity
         texts={[
           // ✅ Logo + brand as a single React node (repeats seamlessly)
-          <span key="brand" className="inline-flex items-center gap-3 align-middle">
+          <span
+            key="brand"
+            className="inline-flex items-center gap-3 align-middle"
+          >
             <Image
-              src="/images/logo.png"          // put your logo at public/images/logo.png
+              src="/images/logo.png" // put your logo at public/images/logo.png
               alt="Famouse Tours & Travels"
               width={160}
               height={160}

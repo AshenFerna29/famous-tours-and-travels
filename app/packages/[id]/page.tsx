@@ -36,8 +36,8 @@ export default async function PackageDetailPage({
       <main className="px-6 md:px-40 py-6 space-y-12">
         <h2 className="text-3xl font-bold text-[#fda720] mb-6">{data.title}</h2>
 
-        <section className="mb-6 grid grid-cols-4 gap-4">
-          <div className="relative col-span-4 aspect-[16/11] overflow-hidden sm:col-span-2 sm:row-span-2">
+        <section className="mb-6 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          <div className="relative col-span-2 aspect-[16/11] overflow-hidden sm:col-span-2 sm:row-span-2">
             <ProgressiveImage
               src={gallery[0]}
               alt={data.title}
@@ -46,7 +46,7 @@ export default async function PackageDetailPage({
             />
           </div>
           {gallery.slice(1, 5).map((src, i) => (
-            <div key={i} className="relative aspect-[6/4.1] overflow-hidden">
+            <div key={i} className="relative aspect-[6/4] overflow-hidden">
               <ProgressiveImage
                 src={src}
                 alt={`${data.title} ${i + 2}`}
@@ -58,8 +58,8 @@ export default async function PackageDetailPage({
         </section>
 
         <section className="mb-10">
-          <div className="flex flex-wrap justify-between items-center rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
-            <div className="flex items-center gap-3 flex-1 min-w-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 rounded-xl bg-white p-4 md:p-6 shadow-sm ring-1 ring-gray-200">
+            <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-[#353978]">
                 <Flag size={16} />
               </div>
@@ -71,7 +71,7 @@ export default async function PackageDetailPage({
               </div>
             </div>
 
-            <div className="flex items-center gap-3 flex-1 min-w-0">
+            <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-[#353978]">
                 <CalendarDays size={16} />
               </div>
@@ -83,7 +83,7 @@ export default async function PackageDetailPage({
               </div>
             </div>
 
-            <div className="flex items-center gap-3 flex-1 min-w-0">
+            <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-[#353978]">
                 <CarFront size={16} />
               </div>
@@ -95,7 +95,7 @@ export default async function PackageDetailPage({
               </div>
             </div>
 
-            <div className="flex items-center gap-3 flex-1 min-w-0">
+            <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-[#353978]">
                 <Hotel size={16} />
               </div>
