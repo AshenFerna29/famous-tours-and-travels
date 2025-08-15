@@ -149,4 +149,64 @@
     max-width: 100%;
     height: auto;
   }
+  /* Animated Button */
+  .button1 {
+    line-height: 1;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* Reduced gap */
+    background-color: #ffffff;
+    color: #000000;  
+    border: 0.1px solid #000000; /* Black border */
+    border-radius: 10rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem; /* Reduced padding */
+    padding-left: 16px; /* Slightly smaller left padding */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-size: 0.9rem; /* Slightly smaller text */
+  }
+
+
+  .button1__icon-wrapper {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    color: #000;
+    background-color: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .button1:hover {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+  }
+
+  .button1:hover .button1__icon-wrapper {
+    color: #000000;
+    background-color: #ffffff;
+  }
+
+  .button1__icon-svg--copy {
+    position: absolute;
+    transform: translate(-150%, 150%);
+  }
+
+  .button1:hover .button1__icon-svg:first-child {
+    transition: transform 0.3s ease-in-out;
+    transform: translate(150%, -150%);
+  }
+
+  .button1:hover .button1__icon-svg--copy {
+    transition: transform 0.3s ease-in-out 0.1s;
+    transform: translate(0);
+  }
+
 }
