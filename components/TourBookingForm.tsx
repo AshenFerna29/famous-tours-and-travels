@@ -55,8 +55,11 @@ const TourBookingForm: React.FC = () => {
 
       case "phone":
         if (!value.trim()) return "Phone number is required";
-        if (!/^\d{10,15}$/.test(value.replace(/\s/g, "")))
-          return "Phone number must contain only numbers (10-15 digits)";
+        {
+          const cleaned = value.replace(/[\s-]/g, "");
+          if (!/^\+?\d{10,15}$/.test(cleaned))
+            return "Phone number must be 10-15 digits, optionally starting with +";
+        }
         break;
 
       case "package":
