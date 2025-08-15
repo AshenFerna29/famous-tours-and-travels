@@ -14,7 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 const rotatingItems = [
   " PRISTINE BEACHES ",
   " VIBRANT CULTURE ",
-  " LUSH RAINFORESTS ",
   " EXOTIC WILDLIFE ",
   " MISTY MOUNTAINS ",
 ];
@@ -146,7 +145,7 @@ export default function Hero() {
         <h1
           className={`hero-title text-4xl md:text-6xl font-black font-Geomanist text-black transition-all duration-1000 ease-out ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } whitespace-nowrap`}
+          } whitespace-normal md:whitespace-nowrap`}
           style={{ transitionDelay: isLoaded ? "300ms" : "0ms" }}
         >
           <span className="discover-word inline-block">DISCOVER </span>
@@ -155,7 +154,7 @@ export default function Hero() {
           <span className="inline-block align-baseline rotating-chip">
             <RotatingText
               texts={rotatingItems}
-              mainClassName="px-2 sm:px-2 md:px-3 text-[#fda720] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+              mainClassName="px-1.5 sm:px-2 md:px-3 text-[#fda720] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}

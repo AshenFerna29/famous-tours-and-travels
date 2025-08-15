@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import Navbar from "@/components/Navbar";
@@ -11,8 +10,6 @@ import heroImage from "@/public/images/ContactUs-hero.jpg";
 import Breadcrumb from "@/components/Breadcrumb";
 
 export default function ContactUsPage() {
-  const router = useRouter();
-
   return (
     <>
       <Navbar />
@@ -27,7 +24,7 @@ export default function ContactUsPage() {
             priority
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <h1 className="text-8xl font-black text-white text-center">
+            <h1 className="text-4xl md:text-8xl leading-tight font-black text-white text-center">
               Contact Us
             </h1>
           </div>
@@ -35,11 +32,8 @@ export default function ContactUsPage() {
 
         {/* Breadcrumb */}
         <Breadcrumb
-            items={[
-              { label: "Home", href: "/home" },
-              { label: "Contact Us" },
-            ]}
-          />
+          items={[{ label: "Home", href: "/home" }, { label: "Contact Us" }]}
+        />
         {/* Info Section */}
         <div className="px-6 md:px-40 py-12 space-y-12">
           <section>

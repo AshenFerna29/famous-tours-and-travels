@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -17,7 +16,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutUsPage() {
   const pageRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
     if (!pageRef.current) return;
@@ -57,7 +55,7 @@ export default function AboutUsPage() {
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-8xl font-black text-white text-center">
+          <h1 className="text-4xl md:text-8xl leading-tight font-black text-white text-center">
             About Us
           </h1>
         </div>
