@@ -101,7 +101,7 @@ export default function Hero() {
   return (
     <section
       ref={rootRef}
-      className="hero-section relative min-h-[120vh] md:min-h-[140vh] flex flex-col justify-start items-center text-center pt-28 md:pt-45 overflow-hidden"
+      className="hero-section relative min-h-[140vh] flex flex-col justify-start items-center text-center pt-45 overflow-hidden"
     >
       {/* Real image layer behind everything */}
       <div className="absolute inset-0 -z-10">
@@ -142,26 +142,26 @@ export default function Hero() {
       />
 
       {/* Content */}
-    <div className="relative z-10 max-w-4xl px-4 sm:px-6 mx-auto">
+      <div className="relative z-10 max-w-4xl px-4 mx-auto">
         <h1
-      className={`hero-title text-3xl sm:text-5xl md:text-6xl font-black font-Geomanist text-black transition-all duration-1000 ease-out ${
+          className={`hero-title text-4xl md:text-6xl font-black font-Geomanist text-black transition-all duration-1000 ease-out ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      } break-words whitespace-normal leading-tight`}
+          } whitespace-nowrap`}
           style={{ transitionDelay: isLoaded ? "300ms" : "0ms" }}
         >
           <span className="discover-word inline-block">DISCOVER </span>
 
           {/* Rotating text chip */}
-      <span className="inline-block align-baseline rotating-chip">
+          <span className="inline-block align-baseline rotating-chip">
             <RotatingText
               texts={rotatingItems}
-        mainClassName="px-1.5 sm:px-2 md:px-3 text-[#fda720] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+              mainClassName="px-2 sm:px-2 md:px-3 text-[#fda720] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "-120%" }}
               staggerDuration={0.025}
-        splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
               rotationInterval={2000}
               aria-label="Rotating highlights of Sri Lanka"
@@ -172,7 +172,7 @@ export default function Hero() {
         <br />
 
         <p
-          className={`hero-paragraph text-black font-Geomanist text-[15px] sm:text-base md:text-lg transition-all duration-1000 ease-out ${
+          className={`hero-paragraph text-black font-Geomanist text-base md:text-lg transition-all duration-1000 ease-out ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{ transitionDelay: isLoaded ? "500ms" : "0ms" }}

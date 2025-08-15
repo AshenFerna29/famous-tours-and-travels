@@ -219,19 +219,6 @@ export default function Navbar() {
             onClick={() => setMobileOpen(false)}
           />
           <div className="absolute top-[68px] left-1/2 -translate-x-1/2 w-[94%] rounded-2xl bg-white/95 backdrop-blur-xl shadow-xl border border-white/40 p-4">
-            <div className="mb-3">
-              <Input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search tour packages..."
-                className="rounded-xl px-3 pr-9 py-2 bg-[#f5f8ff] placeholder:text-[#52ACE4]"
-              />
-              <Search
-                size={18}
-                className="pointer-events-none absolute right-6 top-[22px] text-[#52ACE4]"
-              />
-            </div>
             <div className="grid gap-1">
               {navItems.map((item) => (
                 <Link
