@@ -1,15 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { packages } from "@/lib/packages";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const searchRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
 
   // Navigation items
@@ -61,6 +66,29 @@ export default function Navbar() {
     };
   }, [lastScrollY]);
 
+  // Close the dropdown on outside click or Escape
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (!searchRef.current) return;
+      if (!searchRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("click", onClick);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("click", onClick);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return packages;
+    return packages.filter((p) => p.title.toLowerCase().includes(q));
+  }, [query]);
+
   return (
     <nav
       className={`fixed h-2 z-50 left-4 md:left-20 top-5 px-4 md:px-10 w-[95%] md:w-[90%] py-10 shadow-md rounded-4xl flex justify-between items-center transition-all duration-300 ${
@@ -104,13 +132,47 @@ export default function Navbar() {
       </div>
 
       {/* Search */}
-      <div className="hidden md:flex items-center relative w-32 lg:w-48">
+      <div
+        ref={searchRef}
+        className="hidden md:flex items-center relative w-60 lg:w-80"
+      >
         <Input
           type="text"
-          placeholder="Search... "
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onFocus={() => setOpen(true)}
+          placeholder="Search tour packages..."
           className="rounded-full px-4 pr-10 py-2 bg-[#f5f8ff] placeholder:text-[#52ACE4]"
         />
-        <Search size={18} className="absolute right-3 text-[#52ACE4]" />
+        <Search size={18} className="pointer-events-none absolute right-3 text-[#52ACE4]" />
+
+        {open && (
+          <div
+            role="listbox"
+            aria-label="Tour Packages"
+            className="absolute left-0 top-11 z-50 w-[28rem] max-w-[80vw] rounded-2xl border border-white/60 bg-white/90 backdrop-blur-xl shadow-xl ring-1 ring-black/5"
+          >
+            <div className="px-5 pt-4 pb-2 text-xs font-semibold tracking-wider text-gray-700">
+              TOUR PACKAGES
+            </div>
+            <div className="max-h-[60vh] overflow-y-auto px-2 pb-2">
+              {filtered.length === 0 ? (
+                <div className="px-3 py-3 text-sm text-gray-500">No matches</div>
+              ) : (
+                filtered.map((p) => (
+                  <Link
+                    key={p.id}
+                    href={`/packages/${p.id}`}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-xl px-3 py-3 text-[0.95rem] text-gray-900 transition-colors hover:bg-[#f5f8ff] hover:text-[#353978]"
+                  >
+                    {p.title}
+                  </Link>
+                ))
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
