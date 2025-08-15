@@ -24,6 +24,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Famous Tours and Travels",
   description: "Explore Sri Lanka like never before!",
+  icons: {
+    icon: [{ url: "/Favicon.png", type: "image/png" }],
+    shortcut: ["/Favicon.png"],
+  },
 };
 
 export default function RootLayout({

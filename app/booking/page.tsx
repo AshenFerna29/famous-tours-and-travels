@@ -8,7 +8,6 @@ import heroImage from "@/public/images/Booking-hero.jpg";
 import Breadcrumb from "@/components/Breadcrumb";
 
 export default function AboutUsPage() {
-
   return (
     <>
       <Navbar />
