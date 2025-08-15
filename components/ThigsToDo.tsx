@@ -68,7 +68,7 @@ export default function ThingsToDo() {
     [activeId]
   );
 
-  // ===== Variants =====
+  // Variants (unchanged)
   const fade: Variants = {
     hidden: { opacity: 0, y: 12 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
@@ -79,7 +79,7 @@ export default function ThingsToDo() {
     show: { opacity: 1, scale: 1, transition: { duration: 0.25, ease: "easeOut" } },
   };
 
-  // ===== Ripple (kept) =====
+  // Ripple trail (unchanged)
   const rippleLayerRef = useRef<HTMLDivElement | null>(null);
   const rippleNodesRef = useRef<HTMLSpanElement[]>([]);
   const poolIdxRef = useRef(0);
@@ -112,10 +112,7 @@ export default function ThingsToDo() {
     spawnRipple(e.clientX - rect.left, e.clientY - rect.top);
   };
 
-  // ===== NO zoom-to-pin: map stays still =====
-  // (We keep the stage wrapper and CSS vars static so nothing pans/zooms.)
-
-  // ===== Arc helpers =====
+  // Arc helpers (unchanged)
   const idToLoc = (id: number) => LOCATIONS.find((l) => l.id === id);
   const quadPath = (a: { x: number; y: number }, b: { x: number; y: number }, k = 0.18) => {
     const dx = b.x - a.x;
@@ -139,14 +136,14 @@ export default function ThingsToDo() {
     })
     .filter(Boolean) as { key: string; d: string }[];
 
-  // ===== Sparkle ring config (kept) =====
+  // Sparkle ring settings (still used for active)
   const SPARKLES = 7;
   const RADIUS_PX = 18;
   const DURATIONS = [720, 780, 840, 900];
 
   return (
     <section className="relative bg-white">
-      {/* subtle global aura */}
+      {/* background aura */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_20%_10%,rgba(14,165,233,0.2),transparent_60%),radial-gradient(40%_45%_at_80%_15%,rgba(59,130,246,0.18),transparent_60%),radial-gradient(50%_60%_at_50%_90%,rgba(2,132,199,0.16),transparent_60%)]" />
 
       <div className="max-w-7xl mx-auto px-6 pt-10 lg:pt-16">
@@ -163,7 +160,7 @@ export default function ThingsToDo() {
             </p>
           </motion.div>
 
-          {/* MIDDLE: map (now static) */}
+          {/* MIDDLE: map (static) */}
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="relative">
             <div className="relative mx-auto w-full max-w-[660px]">
               {/* watercolor backdrop */}
@@ -172,11 +169,18 @@ export default function ThingsToDo() {
                 <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_45%_75%,rgba(14,165,233,0.18),transparent_60%)] blur-2xl" />
               </div>
 
-              {/* stage with static transform vars */}
+              {/* stage */}
               <div
-                className="relative w-full [transform:translate3d(var(--panX,0px),var(--panY,0px),0)_scale(var(--zoom,1))]"
-                style={{ "--panX": "0px", "--panY": "0px", "--zoom": "1" } as React.CSSProperties}
-                onMouseMove={onRippleMove}
+                className="relative w-full"
+                onMouseMove={(e) => {
+                  const layer = rippleLayerRef.current;
+                  if (!layer) return;
+                  const now = performance.now();
+                  if (now - lastTsRef.current < 90) return;
+                  lastTsRef.current = now;
+                  const rect = layer.getBoundingClientRect();
+                  spawnRipple(e.clientX - rect.left, e.clientY - rect.top);
+                }}
               >
                 {/* base map */}
                 <div className="relative w-full">
@@ -239,7 +243,7 @@ export default function ThingsToDo() {
                   </svg>
                 </div>
 
-                {/* pins + sparkles */}
+                {/* pins — NEW number hover treatment */}
                 <motion.div variants={listStagger} initial="hidden" animate="show" className="pointer-events-none absolute inset-0 z-[3]">
                   {LOCATIONS.map((loc) => {
                     const isActive = activeId === loc.id;
@@ -251,42 +255,38 @@ export default function ThingsToDo() {
                         onMouseEnter={() => setActiveId(loc.id)}
                         onFocus={() => setActiveId(loc.id)}
                         variants={pinPop}
-                        whileHover={{ scale: 1.12 }}
+                        whileHover={{ scale: 1.04 }}
                         className={cn(
-                          "pointer-events-auto group absolute -translate-x-1/2 -translate-y-1/2 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-500/70"
+                          "pointer-events-auto group absolute -translate-x-1/2 -translate-y-1/2 rounded-full focus:outline-none"
                         )}
                         style={{ left: `${loc.x}%`, top: `${loc.y}%` }}
                       >
-                        <span className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-400/25 blur-[6px]" />
-                        <span className="pointer-events-none absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full ring-1 ring-sky-500/50 animate-ripple" />
-                        {isActive && (
-                          <>
-                            <span className="pointer-events-none absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-400/30 blur-md" />
-                            <span className="pointer-events-none absolute left-1/2 top-1/2 h-[46px] w-[46px] -translate-x-1/2 -translate-y-1/2 rounded-full animate-conic" />
-                            <span className="pointer-events-none absolute left-1/2 top-1/2" key={`sp-${activeId}`}>
-                              {Array.from({ length: SPARKLES }).map((_, i) => {
-                                const angle = (i * 360) / SPARKLES;
-                                const dur = `${DURATIONS[i % DURATIONS.length]}ms`;
-                                const delay = `${i * 60}ms`;
-                                return (
-                                  <span key={i} className="sparkle" style={{ "--rot": `${angle}deg`, "--rad": `${RADIUS_PX}px` } as React.CSSProperties}>
-                                    <span className="sparkle-i" style={{ "--dur": dur, "--delay": delay } as React.CSSProperties} />
-                                  </span>
-                                );
-                              })}
-                            </span>
-                          </>
-                        )}
-                        <span
-                          className={cn(
-                            "grid h-7 w-7 place-items-center rounded-full border-2 text-[11px] font-extrabold shadow-sm transition-all",
-                            isActive
-                              ? "bg-sky-600 text-white border-white ring-4 ring-sky-300/40 scale-105"
-                              : "bg-white text-sky-800 border-sky-700 group-hover:bg-sky-600 group-hover:text-white"
-                          )}
-                        >
-                          {loc.id}
+                        {/* Number chip */}
+                        <span className="pin-chip">
+                          <span className={cn("pin-num", isActive && "pin-num--active")}>{loc.id}</span>
+                          {/* Slide-out label on hover/focus */}
+                          <span className="pin-label">{loc.name}</span>
                         </span>
+
+                        {/* keep active sparkles for the selected pin */}
+                        {isActive && (
+                          <span className="pointer-events-none absolute left-1/2 top-1/2" key={`sp-${activeId}`}>
+                            {Array.from({ length: SPARKLES }).map((_, i) => {
+                              const angle = (i * 360) / SPARKLES;
+                              const dur = `${DURATIONS[i % DURATIONS.length]}ms`;
+                              const delay = `${i * 60}ms`;
+                              return (
+                                <span
+                                  key={i}
+                                  className="sparkle"
+                                  style={{ "--rot": `${angle}deg`, "--rad": `${RADIUS_PX}px` } as React.CSSProperties}
+                                >
+                                  <span className="sparkle-i" style={{ "--dur": dur, "--delay": delay } as React.CSSProperties} />
+                                </span>
+                              );
+                            })}
+                          </span>
+                        )}
                       </motion.button>
                     );
                   })}
@@ -330,7 +330,7 @@ export default function ThingsToDo() {
         </div>
       </div>
 
-      {/* Local CSS */}
+      {/* Local CSS (new pin styles + keep existing utility animations) */}
       <style jsx global>{`
         .map-clip {
           -webkit-mask-image: url("/images/map-srilanka.png");
@@ -342,6 +342,106 @@ export default function ThingsToDo() {
                   mask-position: center;
                   mask-size: contain;
         }
+
+        /* ===== NEW number chip ===== */
+        .pin-chip {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 0 8px 0 0;
+          height: 28px;
+          transform-origin: left center;
+        }
+        .pin-num {
+          position: relative;
+          display: grid;
+          place-items: center;
+          width: 26px;
+          height: 26px;
+          border-radius: 9999px;
+          font-size: 11px;
+          font-weight: 800;
+          color: #fff;
+          border: 2px solid #fff;
+          background: radial-gradient(circle at 50% 35%, #0ea5e9 0%, #0284c7 60%, #0369a1 100%);
+          box-shadow: 0 6px 14px rgba(2, 132, 199, 0.24);
+          transition: transform .18s ease, box-shadow .18s ease;
+        }
+        /* shine sweep on the number */
+        .pin-num::after {
+          content: "";
+          position: absolute;
+          inset: -2px;
+          border-radius: inherit;
+          background: conic-gradient(from 0deg, rgba(255,255,255,0) 0deg, rgba(255,255,255,.9) 40deg, rgba(255,255,255,0) 80deg);
+          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+                  mask-composite: exclude;
+          opacity: 0;
+          transform: rotate(0deg);
+        }
+        .group:hover .pin-num::after,
+        .group:focus .pin-num::after {
+          opacity: .9;
+          animation: pinRing 950ms linear infinite;
+        }
+        @keyframes pinRing { to { transform: rotate(360deg); } }
+
+        /* slide-out label to the right */
+        .pin-label {
+          position: absolute;
+          left: 28px;       /* just to the right of the number */
+          top: 50%;
+          transform: translateY(-50%) translateX(6px) scale(.98);
+          transform-origin: left center;
+          max-width: 0;
+          opacity: 0;
+          padding: 6px 10px;
+          border-radius: 9999px;
+          background: rgba(255,255,255,0.92);
+          border: 1px solid rgba(2,132,199,0.35);
+          backdrop-filter: saturate(1.1) blur(2px);
+          color: #0c4a6e;          /* sky-900 */
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: .12em;
+          text-transform: uppercase;
+          white-space: nowrap;
+          pointer-events: none;
+          box-shadow: 0 8px 24px rgba(2,132,199,0.18);
+          transition: max-width .25s ease, opacity .2s ease, transform .22s ease;
+        }
+        .pin-label::before {
+          content: "";
+          position: absolute;
+          left: -5px;
+          top: 50%;
+          width: 8px;
+          height: 8px;
+          transform: translateY(-50%) rotate(45deg);
+          background: inherit;
+          border-left: 1px solid rgba(2,132,199,0.35);
+          border-bottom: 1px solid rgba(2,132,199,0.35);
+          border-radius: 1px;
+        }
+        .group:hover .pin-label,
+        .group:focus .pin-label {
+          max-width: 220px;
+          opacity: 1;
+          transform: translateY(-50%) translateX(10px) scale(1);
+        }
+        .group:hover .pin-num,
+        .group:focus .pin-num {
+          transform: translateY(-1px) scale(1.06);
+          box-shadow: 0 14px 28px rgba(2,132,199,0.3);
+        }
+        .pin-num--active {
+          outline: 2px solid rgba(56, 189, 248, 0.45); /* subtle state hint for selected pin */
+          outline-offset: 2px;
+        }
+
+        /* existing sparkles / ripple (unchanged) */
         .sparkle {
           position: absolute;
           left: 0; top: 0;
@@ -374,6 +474,7 @@ export default function ThingsToDo() {
           35% { opacity: 1; }
           100% { opacity: 0; transform: translate(-50%, -50%) scale(1.05); }
         }
+
         .ripple-dot {
           position: absolute;
           width: 180px; height: 180px;
@@ -390,22 +491,9 @@ export default function ThingsToDo() {
           70% { opacity: 0.15; }
           100% { opacity: 0.00; transform: translate(-50%, -50%) scale(1.30); }
         }
-        @keyframes ripple {
-          0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.65; }
-          70% { opacity: 0.15; }
-          100% { transform: translate(-50%, -50%) scale(1.25); opacity: 0; }
-        }
-        .animate-ripple { animation: ripple 1.8s ease-out infinite; }
-        .animate-conic {
-          background: conic-gradient(from 0deg, rgba(14,165,233,0.0), rgba(14,165,233,0.5), rgba(14,165,233,0.0));
-          mask: radial-gradient(circle at center, transparent 46%, black 47%);
-          animation: spin 1.6s linear infinite;
-          filter: blur(0.3px);
-        }
-        @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
         @media (prefers-reduced-motion: reduce) {
-          .r-burst, .animate-ripple, .animate-conic { animation: none !important; }
-          .sparkle-i { animation: none !important; opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+          .r-burst, .sparkle-i { animation: none !important; }
         }
       `}</style>
     </section>
