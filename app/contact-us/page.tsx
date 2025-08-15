@@ -64,7 +64,7 @@ export default function ContactUsPage() {
               </div>
               <p className="text-sm font-semibold text-black">Travel Agency</p>
               <p className="text-sm text-gray-500 mt-1">
-                330/20, Prison Camp Road,
+                330/25, Prison Camp Road,
                 <br />
                 Dalupotha, Sri Lanka.
               </p>
