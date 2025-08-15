@@ -18,7 +18,7 @@ export default function HomePage() {
       <ThingsToDo />
       <PackageSection />
       <Gallery />
-       <VelocityMarqueeSection />
+      <VelocityMarqueeSection />
       <Footer />
     </>
   );
