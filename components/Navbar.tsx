@@ -121,7 +121,7 @@ export default function Navbar() {
         />
 
         {/* Nav Links (desktop) */}
-        <div className="hidden md:flex gap-6 lg:gap-10 text-sm font-medium text-black ml-4 lg:ml-10">
+        <div className="hidden md:flex gap-6 lg:gap-10 text-sm font-medium text-black ml-6 lg:ml-30">
           {navItems.map((item, index) => (
             <div key={index} className="relative group">
               <a
