@@ -34,17 +34,19 @@ export default function ItineraryTimeline({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const dayIndex = parseInt(entry.target.getAttribute('data-day-index') || '0');
+            const dayIndex = parseInt(
+              entry.target.getAttribute("data-day-index") || "0"
+            );
             const day = items[dayIndex]?.day;
             if (day) {
-              setVisibleDays(prev => new Set([...prev, day]));
+              setVisibleDays((prev) => new Set([...prev, day]));
             }
           }
         });
       },
       {
         threshold: 0.5, // Trigger when 50% of the dot is visible
-        rootMargin: '-20% 0px -20% 0px' // Add some margin for better timing
+        rootMargin: "-20% 0px -20% 0px", // Add some margin for better timing
       }
     );
 
@@ -54,7 +56,7 @@ export default function ItineraryTimeline({
 
     return () => observer.disconnect();
   }, [items]);
-  
+
   if (!items?.length) return null;
 
   return (
@@ -103,11 +105,11 @@ export default function ItineraryTimeline({
               </div>
 
               {/* Text with animation */}
-              <div 
+              <div
                 className={clsx(
                   "space-y-2 transition-all duration-700 ease-out overflow-hidden",
-                  isVisible 
-                    ? "opacity-100 max-h-96 transform translate-y-0" 
+                  isVisible
+                    ? "opacity-100 max-h-96 transform translate-y-0"
                     : "opacity-0 max-h-0 transform translate-y-4"
                 )}
               >

@@ -44,11 +44,11 @@ export default function PackageCard({ data }: Props) {
         {/* Explore */}
         <Link
           href={`/packages/${data.id}`}
-          className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-[#353978] transition group-hover:gap-3"
+          className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-[#fda720] transition group-hover:gap-3"
           aria-label={`Explore ${data.title}`}
         >
           EXPLORE
-          <ArrowUpRight size={18} className="text-[#353978] opacity-70" />
+          <ArrowUpRight size={18} className="text-[#fda720] opacity-70" />
         </Link>
       </div>
     </div>
