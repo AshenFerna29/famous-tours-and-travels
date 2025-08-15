@@ -58,18 +58,9 @@ const useMeasure = <T extends HTMLElement>() => {
   return [ref, size] as const;
 };
 
-const preloadImages = async (urls: string[]): Promise<void> => {
-  await Promise.all(
-    urls.map(
-      (src) =>
-        new Promise<void>((resolve) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = img.onerror = () => resolve();
-        })
-    )
-  );
-};
+// Note: We previously preloaded images before animating. On slower/mobile
+// networks this could delay rendering entirely. We now render immediately
+// and let the browser stream images in to ensure content is visible.
 
 interface Item {
   id: string;
@@ -120,7 +111,6 @@ const Masonry: React.FC<MasonryProps> = ({
   );
 
   const [containerRef, { width }] = useMeasure<HTMLDivElement>();
-  const [imagesReady, setImagesReady] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -170,9 +160,7 @@ const Masonry: React.FC<MasonryProps> = ({
     [animateFrom, containerRef]
   );
 
-  useEffect(() => {
-    preloadImages(items.map((i) => i.img)).then(() => setImagesReady(true));
-  }, [items]);
+  // No preloading step; show content right away for better mobile UX
 
   // Intersection Observer to detect when component is in view
   useEffect(() => {
@@ -201,14 +189,14 @@ const Masonry: React.FC<MasonryProps> = ({
     };
   }, [containerRef]);
 
-  const grid = useMemo<GridItem[]>(() => {
-    if (!width) return [];
+  const { grid, containerHeight } = useMemo(() => {
+    if (!width) return { grid: [] as GridItem[], containerHeight: 0 };
     const colHeights = new Array(columns).fill(0);
     const gap = 16;
     const totalGaps = (columns - 1) * gap;
     const columnWidth = (width - totalGaps) / columns;
 
-    return items.map((child) => {
+    const gridItems: GridItem[] = items.map((child) => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = col * (columnWidth + gap);
       const height = child.height / 2;
@@ -217,6 +205,9 @@ const Masonry: React.FC<MasonryProps> = ({
       colHeights[col] += height + gap;
       return { ...child, x, y, w: columnWidth, h: height };
     });
+
+    const maxHeight = Math.max(...colHeights, 0) - (columns > 0 ? gap : 0);
+    return { grid: gridItems, containerHeight: Math.max(0, maxHeight) };
   }, [columns, items, width]);
 
   const hasMounted = useRef(false);
@@ -224,7 +215,7 @@ const Masonry: React.FC<MasonryProps> = ({
 
   // Set initial positions without animation when images are ready
   useLayoutEffect(() => {
-    if (!imagesReady || !width) return;
+    if (!width) return;
 
     grid.forEach((item) => {
       const selector = `[data-key="${item.id}"]`;
@@ -255,19 +246,11 @@ const Masonry: React.FC<MasonryProps> = ({
     });
 
     hasMounted.current = true;
-  }, [
-    grid,
-    imagesReady,
-    width,
-    getInitialPosition,
-    blurToFocus,
-    duration,
-    ease,
-  ]);
+  }, [grid, width, getInitialPosition, blurToFocus, duration, ease]);
 
   // Animate in when component comes into view
   useLayoutEffect(() => {
-    if (!imagesReady || !isInView || hasAnimated.current) return;
+    if (!isInView || hasAnimated.current) return;
 
     grid.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
@@ -284,7 +267,7 @@ const Masonry: React.FC<MasonryProps> = ({
     });
 
     hasAnimated.current = true;
-  }, [grid, imagesReady, isInView, stagger, blurToFocus]);
+  }, [grid, isInView, stagger, blurToFocus]);
 
   const handleMouseEnter = (id: string, element: HTMLElement) => {
     if (scaleOnHover) {
@@ -315,7 +298,11 @@ const Masonry: React.FC<MasonryProps> = ({
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-full">
+    <div
+      ref={containerRef}
+      className="relative w-full"
+      style={{ height: containerHeight || undefined }}
+    >
       {grid.map((item) => (
         <div
           key={item.id}

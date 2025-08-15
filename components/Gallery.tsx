@@ -75,7 +75,7 @@ const Gallery = () => {
           </p>
         </div>
 
-        <div className="h-[800px] w-full p-15">
+        <div className="w-full p-15">
           <Masonry
             items={items}
             ease="power3.out"
