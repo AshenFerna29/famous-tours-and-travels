@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { BsTelephoneFill } from 'react-icons/bs';
@@ -32,8 +33,22 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-3 text-white">CONNECT WITH US</h4>
             <div className="flex space-x-4 text-lg ">
-              <FaFacebookF/>
-              <FaInstagram />
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#fda720] transition-colors"
+              >
+                <FaFacebookF />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#fda720] transition-colors"
+              >
+                <FaInstagram />
+              </a>
             </div>
           </div>
 
@@ -41,11 +56,31 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-3 text-white">QUICK LINKS</h4>
             <ul className="flex flex-wrap gap-4">
-              <li>Home</li>
-              <li>About Us</li>
-              <li>Packages</li>
-              <li>FAQ</li>
-              <li>Contact Us</li>
+              <li>
+                <Link href="/home" className="hover:text-[#fda720] transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about-us" className="hover:text-[#fda720] transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/booking" className="hover:text-[#fda720] transition-colors">
+                  Packages
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-[#fda720] transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact-us" className="hover:text-[#fda720] transition-colors">
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -54,11 +89,18 @@ export default function Footer() {
             <h4 className="font-bold mb-3 text-white">CONTACT US</h4>
             <div className="flex items-center gap-2 mb-2 text-sm">
               <BsTelephoneFill className="text-white flex-shrink-0" />
-              <span className="break-all">+94 77 349 1157</span>
+              <a href="tel:+94773491157" className="hover:text-[#fda720] transition-colors">
+                +94 77 349 1157
+              </a>
             </div>
             <div className="flex items-center gap-2 text-sm">
               <MdEmail className="text-white text-xl flex-shrink-0" />
-              <span className="break-all">famoustoursandtravels@gmail.com</span>
+              <a
+                href="mailto:famoustoursandtravels@gmail.com"
+                className="hover:text-[#fda720] transition-colors"
+              >
+                famoustoursandtravels@gmail.com
+              </a>
             </div>
           </div>
         </div>
