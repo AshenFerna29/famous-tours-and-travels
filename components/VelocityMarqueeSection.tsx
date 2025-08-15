@@ -14,12 +14,15 @@ export default function VelocityMarqueeSection() {
       <ScrollVelocity
         texts={[
           // Line 1: logo + brand (repeats seamlessly)
-          <span key="brand" className="inline-flex items-center gap-3 align-middle">
+          <span
+            key="brand"
+            className="inline-flex items-center gap-3 align-middle"
+          >
             <Image
-              src="/images/logo.png"  // ensure this exists
+              src="/images/logo.png" // ensure this exists
               alt="Famouse Tours & Travels"
-              width={128}
-              height={128}
+              width={160}
+              height={160}
               className="inline-block h-[1em] w-auto object-contain align-middle"
               priority
             />
