@@ -14,7 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 const rotatingItems = [
   " PRISTINE BEACHES ",
   " VIBRANT CULTURE ",
-  " LUSH RAINFORESTS ",
   " EXOTIC WILDLIFE ",
   " MISTY MOUNTAINS ",
 ];

@@ -1,3 +1,6 @@
+// components/Masonry.tsx
+"use client";
+
 import React, {
   useEffect,
   useLayoutEffect,
@@ -23,7 +26,6 @@ const useMedia = (
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-
     const get = () =>
       values[queries.findIndex((q) => window.matchMedia(q).matches)] ??
       defaultValue;
@@ -77,7 +79,6 @@ interface Item {
   url?: string;
   height: number;
 }
-
 interface GridItem extends Item {
   x: number;
   y: number;
@@ -132,39 +133,16 @@ const Masonry: React.FC<MasonryProps> = ({
       let direction = animateFrom;
       if (animateFrom === "random") {
         const dirs = ["top", "bottom", "left", "right"];
-        direction = dirs[
-          Math.floor(Math.random() * dirs.length)
-        ] as typeof animateFrom;
+        direction = dirs[Math.floor(Math.random() * dirs.length)] as typeof animateFrom;
       }
 
       switch (direction) {
-        case "top":
-          return { x: item.x, y: -200 };
-        case "bottom":
-          return {
-            x: item.x,
-            y:
-              typeof window !== "undefined"
-                ? window.innerHeight + 200
-                : item.y + 200,
-          };
-        case "left":
-          return { x: -200, y: item.y };
-        case "right":
-          return {
-            x:
-              typeof window !== "undefined"
-                ? window.innerWidth + 200
-                : item.x + 200,
-            y: item.y,
-          };
-        case "center":
-          return {
-            x: containerRect.width / 2 - item.w / 2,
-            y: containerRect.height / 2 - item.h / 2,
-          };
-        default:
-          return { x: item.x, y: item.y + 100 };
+        case "top": return { x: item.x, y: -200 };
+        case "bottom": return { x: item.x, y: (typeof window !== "undefined" ? window.innerHeight : item.y) + 200 };
+        case "left": return { x: -200, y: item.y };
+        case "right": return { x: (typeof window !== "undefined" ? window.innerWidth : item.x) + 200, y: item.y };
+        case "center": return { x: containerRect.width / 2 - item.w / 2, y: containerRect.height / 2 - item.h / 2 };
+        default: return { x: item.x, y: item.y + 100 };
       }
     },
     [animateFrom, containerRef]
@@ -174,62 +152,47 @@ const Masonry: React.FC<MasonryProps> = ({
     preloadImages(items.map((i) => i.img)).then(() => setImagesReady(true));
   }, [items]);
 
-  // Intersection Observer to detect when component is in view
+  // Observe when the grid enters viewport
   useEffect(() => {
     if (!containerRef.current) return;
-
     observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-          }
-        });
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of the component is visible
-        rootMargin: "50px", // Start animation 50px before the component is fully visible
-      }
+      (entries) => entries.forEach((e) => e.isIntersecting && setIsInView(true)),
+      { threshold: 0.1, rootMargin: "50px" }
     );
-
     observerRef.current.observe(containerRef.current);
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
+    return () => observerRef.current?.disconnect();
   }, [containerRef]);
 
-  const grid = useMemo<GridItem[]>(() => {
-    if (!width) return [];
+  // Build grid + compute container height ✅
+  const { grid, containerHeight } = useMemo(() => {
+    if (!width) return { grid: [] as GridItem[], containerHeight: 0 };
     const colHeights = new Array(columns).fill(0);
     const gap = 16;
     const totalGaps = (columns - 1) * gap;
     const columnWidth = (width - totalGaps) / columns;
 
-    return items.map((child) => {
+    const g: GridItem[] = items.map((child) => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = col * (columnWidth + gap);
       const height = child.height / 2;
       const y = colHeights[col];
-
       colHeights[col] += height + gap;
       return { ...child, x, y, w: columnWidth, h: height };
     });
+
+    const h = Math.max(0, Math.max(...colHeights) - 16); // subtract last gap
+    return { grid: g, containerHeight: h };
   }, [columns, items, width]);
 
   const hasMounted = useRef(false);
   const hasAnimated = useRef(false);
 
-  // Set initial positions without animation when images are ready
+  // Position items (no animation for initial set)
   useLayoutEffect(() => {
     if (!imagesReady || !width) return;
 
     grid.forEach((item) => {
       const selector = `[data-key="${item.id}"]`;
-
-      // Set initial hidden state without animation
       if (!hasAnimated.current) {
         const start = getInitialPosition(item);
         gsap.set(selector, {
@@ -241,7 +204,6 @@ const Masonry: React.FC<MasonryProps> = ({
           ...(blurToFocus && { filter: "blur(10px)" }),
         });
       } else {
-        // Handle resize animations
         gsap.to(selector, {
           x: item.x,
           y: item.y,
@@ -255,80 +217,64 @@ const Masonry: React.FC<MasonryProps> = ({
     });
 
     hasMounted.current = true;
-  }, [
-    grid,
-    imagesReady,
-    width,
-    getInitialPosition,
-    blurToFocus,
-    duration,
-    ease,
-  ]);
+  }, [grid, imagesReady, width, getInitialPosition, blurToFocus, duration, ease]);
 
-  // Animate in when component comes into view
+  // Animate in when visible
   useLayoutEffect(() => {
     if (!imagesReady || !isInView || hasAnimated.current) return;
 
     grid.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
-      const animProps = { x: item.x, y: item.y, width: item.w, height: item.h };
-
       gsap.to(selector, {
         opacity: 1,
-        ...animProps,
+        x: item.x,
+        y: item.y,
+        width: item.w,
+        height: item.h,
         ...(blurToFocus && { filter: "blur(0px)" }),
         duration: 0.8,
         ease: "power3.out",
-        delay: index * stagger,
+        delay: index * (/* stagger: */ 0.05),
       });
     });
 
     hasAnimated.current = true;
-  }, [grid, imagesReady, isInView, stagger, blurToFocus]);
+  }, [grid, imagesReady, isInView, blurToFocus]);
 
   const handleMouseEnter = (id: string, element: HTMLElement) => {
     if (scaleOnHover) {
-      gsap.to(`[data-key="${id}"]`, {
-        scale: hoverScale,
-        duration: 0.3,
-        ease: "power2.out",
-      });
+      gsap.to(`[data-key="${id}"]`, { scale: hoverScale, duration: 0.3, ease: "power2.out" });
     }
     if (colorShiftOnHover) {
-      const overlay = element.querySelector(".color-overlay") as HTMLElement;
+      const overlay = element.querySelector(".color-overlay") as HTMLElement | null;
       if (overlay) gsap.to(overlay, { opacity: 0.3, duration: 0.3 });
     }
   };
 
   const handleMouseLeave = (id: string, element: HTMLElement) => {
     if (scaleOnHover) {
-      gsap.to(`[data-key="${id}"]`, {
-        scale: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      });
+      gsap.to(`[data-key="${id}"]`, { scale: 1, duration: 0.3, ease: "power2.out" });
     }
     if (colorShiftOnHover) {
-      const overlay = element.querySelector(".color-overlay") as HTMLElement;
+      const overlay = element.querySelector(".color-overlay") as HTMLElement | null;
       if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.3 });
     }
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-full">
+    // ✅ Height now reflects the absolute-positioned children
+    <div
+      ref={containerRef}
+      className="relative w-full"
+      style={{ height: containerHeight || 1 }} // never 0, prevents overlap
+    >
       {grid.map((item) => (
         <div
           key={item.id}
           data-key={item.id}
-          className={`absolute box-content ${
-            item.url ? "cursor-pointer" : "cursor-default"
-          }`}
+          className={`absolute box-content ${item.url ? "cursor-pointer" : "cursor-default"}`}
           style={{ willChange: "transform, width, height, opacity" }}
-          onClick={
-            item.url
-              ? () => window.open(item.url, "_blank", "noopener")
-              : undefined
-          }
+          onClick={item.url ? () => window.open(item.url, "_blank", "noopener") : undefined}
           onMouseEnter={(e) => handleMouseEnter(item.id, e.currentTarget)}
           onMouseLeave={(e) => handleMouseLeave(item.id, e.currentTarget)}
         >
