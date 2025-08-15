@@ -1,39 +1,45 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('');
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  setStatus('Sending...');
-  setIsSubmitting(true);
+    setStatus("Sending...");
+    setIsSubmitting(true);
 
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
 
-  if (res.ok) {
-      setStatus('Submitted!');
-      setFormData({ name: '', email: '', message: '' });
+    if (res.ok) {
+      setStatus("Submitted!");
+      setFormData({ name: "", email: "", message: "" });
 
       // Reset status after 3 seconds
       setTimeout(() => {
-        setStatus('');
+        setStatus("");
       }, 3000);
     } else {
-      setStatus('Failed to send. Try again.');
+      setStatus("Failed to send. Try again.");
     }
-  setIsSubmitting(false);
+    setIsSubmitting(false);
   };
 
   return (
@@ -70,22 +76,25 @@ export default function ContactForm() {
         type="submit"
         disabled={isSubmitting}
         className={`px-6 py-2 rounded-md text-white transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-0.5 ${
-          isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-[#fda720]'
+          isSubmitting
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-blue-500 hover:bg-[#fda720]"
         }`}
       >
         {isSubmitting ? (
           <span className="inline-flex items-center gap-2">
-            <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden />
+            <span
+              className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"
+              aria-hidden
+            />
             Sending...
           </span>
         ) : (
-          'Submit'
+          "Submit"
         )}
       </button>
 
-
-
-      {status && status !== 'Submitted!' && (
+      {status && status !== "Submitted!" && (
         <p className="text-center text-sm mt-2 text-gray-600">{status}</p>
       )}
     </form>

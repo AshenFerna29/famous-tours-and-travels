@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import ProgressiveImage from "@/components/ProgressiveImage";
 import { notFound } from "next/navigation";
 import { CalendarDays, CarFront, Hotel, Flag } from "lucide-react";
 import { getAllPackageIds, getPackageById } from "@/lib/packages";
@@ -39,20 +38,20 @@ export default async function PackageDetailPage({
 
         <section className="mb-6 grid grid-cols-4 gap-4">
           <div className="relative col-span-4 aspect-[16/11] overflow-hidden sm:col-span-2 sm:row-span-2">
-            <Image
+            <ProgressiveImage
               src={gallery[0]}
               alt={data.title}
               fill
-              className="object-cover"
+              imgClassName="object-cover"
             />
           </div>
           {gallery.slice(1, 5).map((src, i) => (
             <div key={i} className="relative aspect-[6/4.1] overflow-hidden">
-              <Image
+              <ProgressiveImage
                 src={src}
                 alt={`${data.title} ${i + 2}`}
                 fill
-                className="object-cover"
+                imgClassName="object-cover"
               />
             </div>
           ))}
