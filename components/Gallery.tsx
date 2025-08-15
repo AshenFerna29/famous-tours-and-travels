@@ -21,7 +21,7 @@ const Gallery = () => {
     },
     {
       id: "4",
-      img: "/images/gallery/gallery-4.jpg",
+      img: "/images/gallery/gallery-4.JPG",
       height: 350,
     },
     {
@@ -41,13 +41,23 @@ const Gallery = () => {
     },
     {
       id: "8",
-      img: "/images/gallery/gallery-8.jpg",
+      img: "/images/gallery/gallery-8.JPG",
       height: 375,
     },
     {
       id: "9",
-      img: "/images/gallery/gallery-9.jpg",
+      img: "/images/gallery/gallery-9.JPG",
       height: 425,
+    },
+    {
+      id: "10",
+      img: "/images/gallery/gallery-10.JPG",
+      height: 360,
+    },
+    {
+      id: "11",
+      img: "/images/gallery/gallery-11.JPG",
+      height: 520,
     },
   ];
 
