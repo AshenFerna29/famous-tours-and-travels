@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Footer from "@/components/Footer";
@@ -9,7 +8,6 @@ import heroImage from "@/public/images/Booking-hero.jpg";
 import Breadcrumb from "@/components/Breadcrumb";
 
 export default function AboutUsPage() {
-  const router = useRouter();
 
   return (
     <>
@@ -25,7 +23,7 @@ export default function AboutUsPage() {
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-8xl font-black text-white text-center">
+          <h1 className="text-4xl md:text-8xl leading-tight font-black text-white text-center">
             Bookings
           </h1>
         </div>

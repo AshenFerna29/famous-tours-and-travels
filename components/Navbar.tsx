@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 import { useState, useEffect, useMemo, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { packages } from "@/lib/packages";
@@ -14,6 +14,7 @@ export default function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
 
@@ -56,7 +57,7 @@ export default function Navbar() {
         setIsVisible(true); // Scrolling up
       }
 
-      setLastScrollY(currentScrollY);
+  setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -70,10 +71,15 @@ export default function Navbar() {
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       if (!searchRef.current) return;
-      if (!searchRef.current.contains(e.target as Node)) setOpen(false);
+      if (!searchRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        setMobileOpen(false);
+      }
     };
     window.addEventListener("click", onClick);
     window.addEventListener("keydown", onKey);
@@ -90,14 +96,15 @@ export default function Navbar() {
   }, [query]);
 
   return (
+    <>
     <nav
-      className={`fixed h-2 z-50 left-4 md:left-20 top-5 px-4 md:px-10 w-[95%] md:w-[90%] py-10 shadow-md rounded-4xl flex justify-between items-center transition-all duration-300 ${
+      className={`fixed z-50 left-1/2 -translate-x-1/2 top-3 px-3 md:px-6 w-[94%] md:w-[90%] py-3 md:py-4 lg:py-5 shadow-md rounded-3xl flex justify-between items-center transition-all duration-300 ${
         isScrolled
-          ? "bg-white/20 backdrop-blur-xl border border-white/30"
+          ? "bg-white/70 backdrop-blur-xl border border-white/30"
           : "bg-white"
-      } ${
-        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-      }`}
+      } ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
+      role="navigation"
+      aria-label="Primary"
     >
       {/* Logo */}
       <Image
@@ -106,11 +113,11 @@ export default function Navbar() {
         width={50}
         height={50}
         className="object-contain"
-        style={{ width: "auto", height: "50px" }}
+        style={{ width: "auto", height: "42px" }}
       />
 
-      {/* Nav Links */}
-      <div className="hidden md:flex gap-6 lg:gap-15 text-sm font-medium text-black ml-8 lg:ml-16">
+      {/* Nav Links (desktop) */}
+      <div className="hidden md:flex gap-6 lg:gap-10 text-sm font-medium text-black ml-4 lg:ml-10">
         {navItems.map((item, index) => (
           <div key={index} className="relative group">
             <a
@@ -131,10 +138,10 @@ export default function Navbar() {
         ))}
       </div>
 
-      {/* Search */}
+      {/* Search (desktop) */}
       <div
         ref={searchRef}
-        className="hidden md:flex items-center relative w-60 lg:w-80"
+        className="hidden md:flex items-center relative w-56 lg:w-72"
       >
         <Input
           type="text"
@@ -179,6 +186,62 @@ export default function Navbar() {
           </div>
         )}
       </div>
-    </nav>
+
+      {/* Mobile controls */}
+      <button
+        type="button"
+        className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-black/10 text-black"
+        aria-label="Toggle menu"
+        aria-expanded={mobileOpen}
+        onClick={(e) => {
+          e.stopPropagation();
+          setMobileOpen((v) => !v);
+        }}
+      >
+        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
+  </nav>
+  {/* Mobile drawer */}
+  {mobileOpen && (
+      <div
+        key="mobile-menu"
+        className="md:hidden fixed inset-0 z-40"
+        aria-hidden={!mobileOpen}
+      >
+        <div
+          className="absolute inset-0 bg-black/20"
+          onClick={() => setMobileOpen(false)}
+        />
+        <div className="absolute top-[68px] left-1/2 -translate-x-1/2 w-[94%] rounded-2xl bg-white/95 backdrop-blur-xl shadow-xl border border-white/40 p-4">
+          <div className="mb-3">
+            <Input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search tour packages..."
+              className="rounded-xl px-3 pr-9 py-2 bg-[#f5f8ff] placeholder:text-[#52ACE4]"
+            />
+            <Search size={18} className="pointer-events-none absolute right-6 top-[22px] text-[#52ACE4]" />
+          </div>
+          <div className="grid gap-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className={`block rounded-lg px-3 py-3 text-[15px] ${
+                  isActiveLink(item.href)
+                    ? "bg-[#f5f8ff] text-[#353978]"
+                    : "text-gray-900 hover:bg-[#f5f8ff] hover:text-[#353978]"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
