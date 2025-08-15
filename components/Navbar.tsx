@@ -144,7 +144,10 @@ export default function Navbar() {
           placeholder="Search tour packages..."
           className="rounded-full px-4 pr-10 py-2 bg-[#f5f8ff] placeholder:text-[#52ACE4]"
         />
-        <Search size={18} className="pointer-events-none absolute right-3 text-[#52ACE4]" />
+        <Search
+          size={18}
+          className="pointer-events-none absolute right-3 text-[#52ACE4]"
+        />
 
         {open && (
           <div
@@ -157,7 +160,9 @@ export default function Navbar() {
             </div>
             <div className="max-h-[60vh] overflow-y-auto px-2 pb-2">
               {filtered.length === 0 ? (
-                <div className="px-3 py-3 text-sm text-gray-500">No matches</div>
+                <div className="px-3 py-3 text-sm text-gray-500">
+                  No matches
+                </div>
               ) : (
                 filtered.map((p) => (
                   <Link

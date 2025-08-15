@@ -149,7 +149,7 @@ export default function ThingsToDo() {
       <div className="max-w-7xl mx-auto px-6 pt-10 lg:pt-16">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr_1fr] items-start">
           {/* LEFT copy */}
-          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="order-1 lg:order-none">
+          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
             <h2 className="text-[42px] leading-[0.9] font-extrabold text-black sm:text-6xl lg:text-7xl">
               <span className="block">PLACES THAT</span>
               <span className="block">WE VISIT</span>
@@ -172,15 +172,7 @@ export default function ThingsToDo() {
               {/* stage */}
               <div
                 className="relative w-full"
-                onMouseMove={(e) => {
-                  const layer = rippleLayerRef.current;
-                  if (!layer) return;
-                  const now = performance.now();
-                  if (now - lastTsRef.current < 90) return;
-                  lastTsRef.current = now;
-                  const rect = layer.getBoundingClientRect();
-                  spawnRipple(e.clientX - rect.left, e.clientY - rect.top);
-                }}
+                onMouseMove={onRippleMove}
               >
                 {/* base map */}
                 <div className="relative w-full">
