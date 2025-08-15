@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ success: true, message: 'Booking delivered to your inbox.' });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('send-booking error:', err);
     return NextResponse.json({ error: 'Failed to send booking' }, { status: 500 });
   }

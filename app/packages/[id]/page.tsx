@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 export default async function PackageDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
   const data = getPackageById(id);

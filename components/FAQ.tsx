@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import heroImage from "@/public/images/FAQ-hero.jpg";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -40,7 +39,6 @@ const faqData = [
 ];
 
 export default function FAQ() {
-  const router = useRouter();
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First FAQ open
 
   const toggle = (index: number) => {

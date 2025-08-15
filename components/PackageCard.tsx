@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CalendarDays, Flag } from "lucide-react";
+import { CalendarDays, Flag } from "lucide-react";
 import type { TourPackage } from "@/types/package";
 
 type Props = {
