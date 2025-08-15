@@ -35,6 +35,8 @@ const LOCATIONS: Location[] = [
   { id: 18, name: "Sinharaja",     slug: "sinharaja",     x: 45, y: 67, excerpt: "UNESCO rainforest—endemic flora, frogs, and superb birding." },
   { id: 19, name: "Udawalawe",     slug: "udawalawe",     x: 64, y: 70, excerpt: "Open landscapes and large elephant herds—classic safari." },
   { id: 20, name: "Pinnawala",     slug: "pinnawala",     x: 44, y: 56, excerpt: "Elephant Orphanage with riverside viewing and feeding times." },
+  { id: 21, name: "Batticaloa",    slug: "batticaloa",    x: 80, y: 40, excerpt: "East-coast lagoons, Kallady Beach, and the old Dutch Fort." },
+  { id: 22, name: "Arugam Bay",    slug: "arugam-bay",    x: 90, y: 60, excerpt: "World-class surf, chilled cafes, and wild beaches near Pottuvil." },
 ];
 
 /** itinerary neighbors for glowing arcs */
@@ -42,14 +44,14 @@ const ARC_NEIGHBORS: Record<number, number[]> = {
   1: [2, 5],
   2: [1, 3],
   3: [2, 4],
-  4: [3, 6],
+  4: [3, 6, 22],              
   5: [6, 9],
   6: [5, 4],
   7: [8],
   8: [9, 7],
-  9: [10, 5],
-  10: [9, 8],
-  11: [6, 20, 4, 19],
+  9: [10, 5, 21],             
+  10: [9, 8, 21],             
+  11: [6, 20, 4, 19, 22],    
   12: [15, 3, 19],
   13: [5, 9, 8, 20, 17],
   14: [2, 15, 3],
@@ -57,9 +59,12 @@ const ARC_NEIGHBORS: Record<number, number[]> = {
   16: [8, 1, 2],
   17: [13, 9, 5],
   18: [3, 15, 19],
-  19: [11, 18, 12, 4],
+  19: [11, 18, 12, 4, 22],    
   20: [5, 2, 1, 13],
+  21: [10, 9, 22],            
+  22: [21, 4, 11, 19],        
 };
+
 
 export default function ThingsToDo() {
   const [activeId, setActiveId] = useState<number>(3);
