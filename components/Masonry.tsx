@@ -1,3 +1,6 @@
+// components/Masonry.tsx
+"use client";
+
 import React, {
   useEffect,
   useLayoutEffect,
@@ -23,7 +26,6 @@ const useMedia = (
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-
     const get = () =>
       values[queries.findIndex((q) => window.matchMedia(q).matches)] ??
       defaultValue;
@@ -68,7 +70,6 @@ interface Item {
   url?: string;
   height: number;
 }
-
 interface GridItem extends Item {
   x: number;
   y: number;
@@ -134,18 +135,16 @@ const Masonry: React.FC<MasonryProps> = ({
           return {
             x: item.x,
             y:
-              typeof window !== "undefined"
-                ? window.innerHeight + 200
-                : item.y + 200,
+              (typeof window !== "undefined" ? window.innerHeight : item.y) +
+              200,
           };
         case "left":
           return { x: -200, y: item.y };
         case "right":
           return {
             x:
-              typeof window !== "undefined"
-                ? window.innerWidth + 200
-                : item.x + 200,
+              (typeof window !== "undefined" ? window.innerWidth : item.x) +
+              200,
             y: item.y,
           };
         case "center":
@@ -162,31 +161,16 @@ const Masonry: React.FC<MasonryProps> = ({
 
   // No preloading step; show content right away for better mobile UX
 
-  // Intersection Observer to detect when component is in view
+  // Observe when the grid enters viewport
   useEffect(() => {
     if (!containerRef.current) return;
-
     observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-          }
-        });
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of the component is visible
-        rootMargin: "50px", // Start animation 50px before the component is fully visible
-      }
+      (entries) =>
+        entries.forEach((e) => e.isIntersecting && setIsInView(true)),
+      { threshold: 0.1, rootMargin: "50px" }
     );
-
     observerRef.current.observe(containerRef.current);
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
+    return () => observerRef.current?.disconnect();
   }, [containerRef]);
 
   const { grid, containerHeight } = useMemo(() => {
@@ -201,7 +185,6 @@ const Masonry: React.FC<MasonryProps> = ({
       const x = col * (columnWidth + gap);
       const height = child.height / 2;
       const y = colHeights[col];
-
       colHeights[col] += height + gap;
       return { ...child, x, y, w: columnWidth, h: height };
     });
@@ -213,14 +196,12 @@ const Masonry: React.FC<MasonryProps> = ({
   const hasMounted = useRef(false);
   const hasAnimated = useRef(false);
 
-  // Set initial positions without animation when images are ready
+  // Position items (no animation for initial set)
   useLayoutEffect(() => {
     if (!width) return;
 
     grid.forEach((item) => {
       const selector = `[data-key="${item.id}"]`;
-
-      // Set initial hidden state without animation
       if (!hasAnimated.current) {
         const start = getInitialPosition(item);
         gsap.set(selector, {
@@ -232,7 +213,6 @@ const Masonry: React.FC<MasonryProps> = ({
           ...(blurToFocus && { filter: "blur(10px)" }),
         });
       } else {
-        // Handle resize animations
         gsap.to(selector, {
           x: item.x,
           y: item.y,
@@ -248,21 +228,22 @@ const Masonry: React.FC<MasonryProps> = ({
     hasMounted.current = true;
   }, [grid, width, getInitialPosition, blurToFocus, duration, ease]);
 
-  // Animate in when component comes into view
+  // Animate in when visible
   useLayoutEffect(() => {
     if (!isInView || hasAnimated.current) return;
 
     grid.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
-      const animProps = { x: item.x, y: item.y, width: item.w, height: item.h };
-
       gsap.to(selector, {
         opacity: 1,
-        ...animProps,
+        x: item.x,
+        y: item.y,
+        width: item.w,
+        height: item.h,
         ...(blurToFocus && { filter: "blur(0px)" }),
         duration: 0.8,
         ease: "power3.out",
-        delay: index * stagger,
+        delay: index * /* stagger: */ 0.05,
       });
     });
 
@@ -278,7 +259,9 @@ const Masonry: React.FC<MasonryProps> = ({
       });
     }
     if (colorShiftOnHover) {
-      const overlay = element.querySelector(".color-overlay") as HTMLElement;
+      const overlay = element.querySelector(
+        ".color-overlay"
+      ) as HTMLElement | null;
       if (overlay) gsap.to(overlay, { opacity: 0.3, duration: 0.3 });
     }
   };
@@ -292,7 +275,9 @@ const Masonry: React.FC<MasonryProps> = ({
       });
     }
     if (colorShiftOnHover) {
-      const overlay = element.querySelector(".color-overlay") as HTMLElement;
+      const overlay = element.querySelector(
+        ".color-overlay"
+      ) as HTMLElement | null;
       if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.3 });
     }
   };
