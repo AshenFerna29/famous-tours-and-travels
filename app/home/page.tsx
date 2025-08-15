@@ -6,6 +6,7 @@ import ThingsToDo from "@/components/ThigsToDo";
 import Gallery from "@/components/Gallery";
 import PackageSection from "@/components/PackageSection";
 import Footer from "@/components/Footer";
+import VelocityMarqueeSection from "@/components/VelocityMarqueeSection";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <ThingsToDo />
       <PackageSection />
       <Gallery />
+       <VelocityMarqueeSection />
       <Footer />
     </>
   );
