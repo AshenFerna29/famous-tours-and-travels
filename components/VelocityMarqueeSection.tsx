@@ -26,7 +26,7 @@ export default function VelocityMarqueeSection() {
               className="inline-block h-[1em] w-auto object-contain align-middle"
               priority
             />
-            <span> Famouse Tours &amp; Travels </span>
+            <span> Famous Tours &amp; Travels </span>
           </span>,
 
           // Line 2: quote
