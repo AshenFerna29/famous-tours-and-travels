@@ -41,7 +41,7 @@ const Gallery = () => {
     },
     {
       id: "8",
-      img: "/images/gallery/gallery-8.JPG",
+      img: "/images/gallery/gallery-7.JPG",
       height: 375,
     },
     {
