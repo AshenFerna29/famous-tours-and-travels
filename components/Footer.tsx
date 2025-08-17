@@ -114,10 +114,10 @@ export default function Footer() {
             <div className="flex items-center gap-2 text-sm justify-center md:justify-start">
               <MdEmail className="text-white text-xl flex-shrink-0" />
               <a
-                href="mailto:famoustoursandtravels@gmail.com"
+                href="mailto:info@famoustoursandtravels.com"
                 className="hover:text-[#fda720] transition-colors"
               >
-                famoustoursandtravels@gmail.com
+                info@famoustoursandtravels.com
               </a>
             </div>
           </div>
