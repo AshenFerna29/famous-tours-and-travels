@@ -66,7 +66,7 @@ const Gallery = () => {
       <div className="max-w-7xl mx-auto">
         <div>
           <h2 className="text-4xl font-bold text-black mb-4 ml-15 text-left">
-            <span className="text-[#fda720]">Moments </span>from the Journey
+            <span className="text-[#fda720]">Memories </span>of the Journey
           </h2>
           <p className="text-lg text-black max-w-2xl text-left ml-15">
             Explore snapshots from our recent tours real memories made by real
