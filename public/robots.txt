@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://famoustoursandtravels.com
+
+# Sitemaps
+Sitemap: https://famoustoursandtravels.com/sitemap.xml
