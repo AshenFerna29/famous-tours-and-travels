@@ -58,7 +58,7 @@ export default function Footer() {
             <ul className="flex flex-col md:flex-wrap gap-2 md:gap-4">
               <li>
                 <Link
-                  href="/home"
+                  href="/"
                   className="hover:text-[#fda720] transition-colors"
                 >
                   Home

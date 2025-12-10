@@ -1,46 +1,21 @@
-"use client";
+export const metadata = {
+  title: "Famous Tours & Travels – Explore Sri Lanka Your Way",
+  description:
+    "Discover Sri Lanka with Famous Tours & Travels. Personalized tour packages, cultural experiences, adventure activities, and scenic journeys crafted to match your travel style.",
+  alternates: {
+    canonical: "https://famoustoursandtravels.com/",
+  },
+  openGraph: {
+    title: "Famous Tours & Travels – Explore Sri Lanka Your Way",
+    description:
+      "Discover Sri Lanka with personalized tour packages, cultural highlights, and breathtaking adventures. Your journey begins with Famous Tours & Travels.",
+    url: "https://famoustoursandtravels.com/",
+    type: "website",
+  },
+};
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import WelcomeSection from "@/components/WelcomeSection";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import ThingsToDo from "@/components/ThigsToDo";
-import Gallery from "@/components/Gallery";
-import PackageSection from "@/components/PackageSection";
-import Footer from "@/components/Footer";
-import VelocityMarqueeSection from "@/components/VelocityMarqueeSection";
+import HomeContent from "./home-content";
 
 export default function HomePage() {
-  const router = useRouter();
-  const [showHome, setShowHome] = useState(false);
-
-  useEffect(() => {
-    const hasVisited = sessionStorage.getItem("visited");
-
-    if (!hasVisited) {
-      sessionStorage.setItem("visited", "true");
-      router.push("/splash");
-    } else {
-      setShowHome(true); 
-    }
-  }, [router]);
-
-  if (!showHome) return null;
-
-  return (
-    <>
-      <Navbar />
-      <Hero />
-      <WelcomeSection />
-      <WhyChooseUs />
-      <ThingsToDo />
-      <PackageSection />
-      <Gallery />
-      <VelocityMarqueeSection />
-      <Footer />
-    </>
-  );
+  return <HomeContent />;
 }

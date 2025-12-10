@@ -1,3 +1,20 @@
+export const metadata = {
+  title: "Sri Lanka Travel Package | Famous Tours & Travels",
+  description:
+    "Discover detailed itineraries, pricing, highlights, and travel experiences for this Sri Lanka tour package by Famous Tours & Travels.",
+  alternates: {
+    canonical: "https://famoustoursandtravels.com/packages",
+  },
+  openGraph: {
+    title: "Sri Lanka Tour Package",
+    description:
+      "Explore day-by-day itineraries and experience highlights of this curated Sri Lanka tour package.",
+    type: "website",
+  },
+};
+
+
+
 import ProgressiveImage from "@/components/ProgressiveImage";
 import { notFound } from "next/navigation";
 import { CalendarDays, CarFront, Hotel, Flag } from "lucide-react";
@@ -29,7 +46,7 @@ export default async function PackageDetailPage({
 
       <div className="pt-25">
         <Breadcrumb
-          items={[{ label: "Home", href: "/home" }, { label: data.title }]}
+          items={[{ label: "Home", href: "/" }, { label: data.title }]}
         />
       </div>
 
@@ -150,3 +167,4 @@ export default async function PackageDetailPage({
     </>
   );
 }
+
