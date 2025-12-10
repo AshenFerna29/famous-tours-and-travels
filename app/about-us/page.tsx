@@ -62,7 +62,7 @@ export default function AboutUsPage() {
 
       {/* Breadcrumb */}
       <Breadcrumb
-        items={[{ label: "Home", href: "/home" }, { label: "About Us" }]}
+        items={[{ label: "Home", href: "/" }, { label: "About Us" }]}
       />
 
       {/* About Us Section */}
