@@ -58,7 +58,7 @@ export default function Footer() {
             <ul className="flex flex-col md:flex-wrap gap-2 md:gap-4">
               <li>
                 <Link
-                  href="/home"
+                  href="/"
                   className="hover:text-[#fda720] transition-colors"
                 >
                   Home
@@ -108,16 +108,16 @@ export default function Footer() {
                 href="tel:+94773491157"
                 className="hover:text-[#fda720] transition-colors"
               >
-                +94 77 349 1157
+                +94 77 349 9157
               </a>
             </div>
             <div className="flex items-center gap-2 text-sm justify-center md:justify-start">
               <MdEmail className="text-white text-xl flex-shrink-0" />
               <a
-                href="mailto:famoustoursandtravels@gmail.com"
+                href="mailto:info@famoustoursandtravels.com"
                 className="hover:text-[#fda720] transition-colors"
               >
-                famoustoursandtravels@gmail.com
+                info@famoustoursandtravels.com
               </a>
             </div>
           </div>

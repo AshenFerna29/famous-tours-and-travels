@@ -32,7 +32,7 @@ export default function ContactUsPage() {
 
         {/* Breadcrumb */}
         <Breadcrumb
-          items={[{ label: "Home", href: "/home" }, { label: "Contact Us" }]}
+          items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
         />
         {/* Info Section */}
         <div className="px-6 md:px-40 py-12 space-y-12">
@@ -88,10 +88,11 @@ export default function ContactUsPage() {
               <p className="text-sm text-gray-500 mt-1">
                 Write to this email for a detailed quotation <br />
                 <a
-                  href="mailto:famoustoursandtravels@gmail.com"
+                  href="mailto:info@famoustoursandtravels.com"
                   className="text-blue-500 underline"
                 >
-                  famoustoursandtravels@gmail.com
+                  info@famoustoursandtravels.com
+                  
                 </a>
               </p>
             </div>

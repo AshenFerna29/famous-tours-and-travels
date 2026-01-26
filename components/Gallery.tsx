@@ -21,7 +21,7 @@ const Gallery = () => {
     },
     {
       id: "4",
-      img: "/images/gallery/gallery-4.JPG",
+      img: "/images/gallery/gallery-4.jpg",
       height: 350,
     },
     {
@@ -41,12 +41,12 @@ const Gallery = () => {
     },
     {
       id: "8",
-      img: "/images/gallery/gallery-8.JPG",
+      img: "/images/gallery/gallery-8.jpg",
       height: 375,
     },
     {
       id: "9",
-      img: "/images/gallery/gallery-9.JPG",
+      img: "/images/gallery/gallery-9.jpg",
       height: 425,
     },
     {
@@ -66,7 +66,7 @@ const Gallery = () => {
       <div className="max-w-7xl mx-auto">
         <div>
           <h2 className="text-4xl font-bold text-black mb-4 ml-15 text-left">
-            <span className="text-[#fda720]">Moments </span>from the Journey
+            <span className="text-[#fda720]">Memories </span>of the Journey
           </h2>
           <p className="text-lg text-black max-w-2xl text-left ml-15">
             Explore snapshots from our recent tours real memories made by real

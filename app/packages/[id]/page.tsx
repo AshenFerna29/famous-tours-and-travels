@@ -1,3 +1,18 @@
+export const metadata = {
+  title: "Sri Lanka Travel Package | Famous Tours & Travels",
+  description:
+    "Discover detailed itineraries, pricing, highlights, and travel experiences for this Sri Lanka tour package by Famous Tours & Travels.",
+  alternates: {
+    canonical: "https://famoustoursandtravels.com/packages",
+  },
+  openGraph: {
+    title: "Sri Lanka Tour Package",
+    description:
+      "Explore day-by-day itineraries and experience highlights of this curated Sri Lanka tour package.",
+    type: "website",
+  },
+};
+
 import ProgressiveImage from "@/components/ProgressiveImage";
 import { notFound } from "next/navigation";
 import { CalendarDays, CarFront, Hotel, Flag } from "lucide-react";
@@ -22,14 +37,50 @@ export default async function PackageDetailPage({
 
   const b = data.badges || {};
   const gallery = data.gallery?.length ? data.gallery : [data.image];
+  const tripSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": data.title,
+    "description": data.description || data.overview,
+    "touristType": data.type,
+    "image": [data.image, ...(data.gallery || [])],
+
+    "itinerary": data.itinerary?.map((item) => ({
+      "@type": "TouristTrip",
+      "name": `Day ${item.day}: ${item.title}`,
+      "description": item.details,
+    })),
+
+    "tripDuration": `${data.days} Days`,
+
+    "provider": {
+      "@type": "TravelAgency",
+      "name": "Famous Tours & Travels",
+      "telephone": "+94 77 349 9157",
+      "email": "info@famoustoursandtravels.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "330/25, Prison Camp Road",
+        "addressLocality": "Dalupotha",
+        "addressCountry": "Sri Lanka",
+      },
+    },
+
+    "url": `https://famoustoursandtravels.com/packages/${id}`,
+  };
 
   return (
     <>
       <Navbar />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }}
+      />
+
       <div className="pt-25">
         <Breadcrumb
-          items={[{ label: "Home", href: "/home" }, { label: data.title }]}
+          items={[{ label: "Home", href: "/" }, { label: data.title }]}
         />
       </div>
 
@@ -96,13 +147,13 @@ export default async function PackageDetailPage({
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-[#353978]">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-[#353978]}">
                 <Hotel size={16} />
               </div>
               <div>
                 <div className="text-xs text-[#353978]">Hotel Category</div>
                 <div className="text-sm font-medium text-gray-900">
-                  {b.hotelCategory || "3‑4 star"}
+                  {b.hotelCategory || "3-4 star"}
                 </div>
               </div>
             </div>

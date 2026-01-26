@@ -20,7 +20,7 @@ export default function Navbar() {
 
   // Navigation items
   const navItems = [
-    { href: "/home", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "/about-us", label: "About Us" },
     { href: "/booking", label: "Booking" },
     { href: "/faq", label: "FAQ" },
